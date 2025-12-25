@@ -18,9 +18,15 @@ let attrsToString = at =>
 let beforeElementHooks = []
 let hookMap = {}
 
-let setHookFor = (path, hook) => hookMap[path]
-		? hookMap[path].push(hook)
-		: hookMap[path] = [hook]
+let setHookFor = (path, hook) =>{
+	if (!Array.isArray(path)) path = [path]
+
+	path.forEach(path => {
+		hookMap[path]
+			? hookMap[path].push(hook)
+			: hookMap[path] = [hook]
+		})
+}
 
 function eat(tree) {
 	let ret = [];
@@ -80,7 +86,7 @@ function eat(tree) {
 	return ret;
 }
 
-setHookFor("pages/wrapping_2025.md", {
+setHookFor(['index.md',"pages/wrapping_2025.md",], {
 	condition: (item, child) => {
 		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
 	},

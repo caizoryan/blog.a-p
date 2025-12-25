@@ -1,32 +1,20 @@
 # BLOG A-P
 
-What is this: [take a look at the readme](./readme.md)
+Hey there person! I hope you're doing well :)
+
+Welcome to my blog. I don't have a lot of stuff here yet, rather there's just one post. This blog runs on the same engine that powers [research.if-m](https://research.if-m.works). 
+
+insert: Here's my first blog post! (WIP)
+[Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
+
 
 
 ### Here is a codeblock
-this code block runs if it is tagged with js-run
+Codeblocks are runnable
 ```js-run
-
 import {test} from "./test.js"
-document.body.style.backgroundColor = 'red'
+document.body.style.backgroundColor = 'beige'
+document.body.style.fontFamily = 'monospace'
 document.body.innerHTML = test
 console.log("running")
 ```
-
-
-### Add support for hooks.
-
-So there should be a hook when creating an element. For instance there can be a beforeElement hook, that will take in the tag, attr and children. 
-
-```
-# Hello world
-this is a p
-;funky this is also a p
-
-```
-
-if there is a hook that says, if p first word is ;funky change style to be xyz. 
-
-The hook can be added by creating a condition fn and a return fn. If the cond returns true, then will use given fn to create el. Otherwise continue.
-
-;funky lets see...
