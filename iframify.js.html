@@ -1,0 +1,14 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+</head> 
+<body>
+	<pre>export let iframescript = js => {
+	return `&lt;body>&lt;/body>&lt;script type="module">${js.replaceAll(`'`, `\'`)}&lt;/script>`
+	// return `&lt;body>&lt;/body>&lt;script type="module">${js.replaceAll(`'`, `"`)}&lt;/script>`
+}
+</pre>
+</body>
+<script type='module' src='script.js'></script>

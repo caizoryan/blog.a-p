@@ -1,6 +1,7 @@
 # What is this?
-This is going to be a repository to publish our research and resources. It is for ourselves to look back to as reference as well as anyone who could benefit from it.
+Blog for A-P. iterating on research.if-m
 
+;funky this wont do it
 
 # Directory structure
 

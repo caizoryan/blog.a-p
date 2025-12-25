@@ -1,29 +1,85 @@
+
+@font-face{
+	font-family: 'seismic-shock';
+	font-weight: 500;
+	src: url(../fonts/SeismicShockTrial-Medium.ttf);
+  
+}
+	@font-face{
+	font-family: 'seismic-shock';
+	font-weight: 300;
+		src: url(../fonts/SeismicShockTrial-Regular.ttf);
+  
+}
+	@font-face{
+		font-family: 'seismic';
+		font-family: 'seismic-shock';
+		font-weight: 600;
+		src: url(../fonts/SeismicShockTrial-SemiBold.ttf);
+  
+}
+	@font-face{
+		font-family: 'seismic';
+		font-weight: 600;
+		src: url(../fonts/SeismicTrial-Bold.ttf);
+  
+}
+	@font-face{
+		font-family: 'seismic';
+
+		font-weight: 100;
+		src: url(../fonts/SeismicTrial-Light.ttf);
+  
+}
+	@font-face{
+		font-family: 'seismic';
+		font-weight: 300;
+		src: url(../fonts/SeismicTrial-Medium.ttf);
+  
+}
+
+:root {
+	--color: white;
+	--page-margin: 20px;
+	--muted: #e8eede;
+	--background: #20411d;
+	--highlight: var(--background);
+	--alt-highlight: #c8eede;
+	--links: var(--alt-highlight);
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'ABC Oracle Unlicensed Trial', sans-serif;
   line-height: 1.6;
-  color: #222;
+  color: var(--color);
+	background: var(--background);
   max-width: 72ch;
-  margin: auto;
+  margin: 0 8em;
+  font-size: 21px;
+}
+
+h1, h2, h3, h4, h5, h6, a {
+  font-family:'seismic-shock', sans-serif;
 }
 
 /* Headings */
 h1, h2, h3 {
   line-height: 1.3;
-  margin: 1.4em 0 0.6em;
+  margin: 2.4em 0 0.6em;
 }
-h1 { font-size: 2rem; }
-h2 { font-size: 1.6rem; }
-h3 { font-size: 1.3rem; }
+h1 { font-size: 4em; }
+h2 { font-size: 3.6em; }
+h3 { font-size: 2.3em; }
 
 /* Text */
 p { margin: 0.8em 0; }
-a { color: #2563eb; text-decoration: none; }
+a { color: var(--links); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* Code blocks (xmp) */
 xmp, pre {
-  background: #111827;
-  color: #f9fafb;
+  background: var(--background);
+  color: var(--color);
   padding: 1em;
   border-radius: 8px;
   overflow-x: auto;
@@ -39,8 +95,37 @@ xmp, pre {
 /* Lists & quotes */
 ul, ol { padding-left: 1.4em; }
 blockquote {
-  border-left: 4px solid #e5e7eb;
+  border-left: 4px solid var(--muted);
   padding-left: 1em;
   color: #555;
   margin: 1em 0;
+}
+
+.repo{
+	margin-top: 3em;
+  font-size: .88em;
+  max-width: 65%;
+}
+
+.feed-link {
+	border-bottom: 1px solid var(--muted);
+  padding: .1em .3em;
+  margin: 0 .5em;
+}
+
+.feed-link span {
+	font-size: .6em;
+}
+
+.insert{
+	background: var(--alt-highlight);
+  color: var(--background);
+  padding: .8em;
+  --links: var(--highlight);
+  --muted: var(--highlight);
+}
+
+br {
+  display: block;
+  margin: 1px 0;
 }

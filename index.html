@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+</head> 
+<body>
+	<h1> BLOG A-P </h1>
+<p> What is this: <a href = "./readme.html"> take a look at the readme </a> </p>
+<h3> Here is a codeblock </h3>
+<p> this code block runs if it is tagged with js-run </p>
+<div class='two-col codeblock'>
+		<textarea>
+import {test} from "./test.js"
+document.body.style.backgroundColor = 'red'
+document.body.innerHTML = test
+console.log("running")
+</textarea>
+		<iframe srcdoc='<body></body><script type="module">
+import {test} from "./test.js"
+document.body.style.backgroundColor = 'red'
+document.body.innerHTML = test
+console.log("running")
+</script>'></iframe>
+		<button>run</button>
+	</div>
+<h3> Add support for hooks. </h3>
+<p> So there should be a hook when creating an element. For instance there can be a beforeElement hook, that will take in the tag, attr and children. </p>
+<pre># Hello world
+this is a p
+;funky this is also a p
+
+</pre>
+<p> if there is a hook that says, if p first word is ;funky change style to be xyz. </p>
+<p> The hook can be added by creating a condition fn and a return fn. If the cond returns true, then will use given fn to create el. Otherwise continue. </p>
+<p> ;funky lets see... </p>
+</body>
+<script type='module' src='script.js'></script>

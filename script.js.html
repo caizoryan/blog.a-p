@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+</head> 
+<body>
+	<pre>import {iframescript} from "./iframify.js"
+
+document.querySelectorAll(".codeblock")
+	.forEach(e => {
+		let [code, iframe, button] = e.children
+		console.log("code: ", code.value)
+		console.log("btn: ", button) // 
+		button.onclick = () => {
+			iframe.srcdoc = iframescript(code.value)
+		}
+	})
+</pre>
+</body>
+<script type='module' src='script.js'></script>
