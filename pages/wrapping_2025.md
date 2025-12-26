@@ -1,3 +1,8 @@
+
+# Reflecting, Recaping and Wrapping up 2025
+
+insert: A lot happened in 2025 and I made a lot of small, medium / large things. As this year is coming to a close, I wanted to take a step back and reflect on the things I made, where these things came from and where do they go next.
+
 ### January 2025
 
 
@@ -61,21 +66,11 @@ insert: Reflection: I think the main issue with this project was that I tried to
 
 <div class='repo'>
 
-date: Feb 27
+date: Feb 7
 
-[caizoryan/jose-website JavaScript ](https://github.com/caizoryan/jose-website) Made Jose's website for the price of 3 hummus
-</div>
-
-
-<div class='repo'>
-
-date: Feb 20
-
-[caizoryan/codemirror-vim JavaScript ](https://github.com/caizoryan/codemirror-vim)
-Forked Codemirror vim to add support for css scaling to work with cursor. This was my first ever contribution to an open source project and I'm super proud of it :)
+[caizoryan/hydra-local JavaScript ](https://github.com/caizoryan/hydra-local) Running hydra in the browser, but writing the code in your own code editor.
 
 </div>
-
 
 
 <div class='repo'>
@@ -86,13 +81,20 @@ date: Feb 11
 
 </div>
 
+<div class='repo'>
+
+date: Feb 20
+
+[caizoryan/codemirror-vim JavaScript ](https://github.com/caizoryan/codemirror-vim)
+Forked Codemirror vim to add support for css scaling to work with cursor. This was my first ever contribution to an open source project and I'm super proud of it :)
+
+</div>
 
 <div class='repo'>
 
-date: Feb 7
+date: Feb 27
 
-[caizoryan/hydra-local JavaScript ](https://github.com/caizoryan/hydra-local) Running hydra in the browser, but writing the code in your own code editor.
-
+[caizoryan/jose-website JavaScript ](https://github.com/caizoryan/jose-website) Made Jose's website for the price of 3 hummus
 </div>
 
 
@@ -102,31 +104,29 @@ date: Feb 7
 
 <div class='repo'>
 
-date: Mar 31
+date: Mar 10
 
-[caizoryan/editor-anisha JavaScript ](https://github.com/caizoryan/editor-anisha) Created an instance of editor to run anisha's game in it.
-
-</div>
-
-
-<div class='repo'>
-
-date: Mar 29
-
-[caizoryan/gradex-website JavaScript ](https://github.com/caizoryan/gradex-website) Made the Gradex website with omama.
+[caizoryan/arena.js Javascript](https://github.com/caizoryan/arena.js) Are.na Typed API but in JSDoc instead of typescript
 
 </div>
 
 
 <div class='repo'>
 
-date: Mar 26
+date: Mar 10
 
-[caizoryan/editor-typesetter JavaScript ](https://github.com/caizoryan/editor-typesetter) For final ISP project, made a publication program prototype that ended up being the large project later on in the year... and the thing I'm currenlty working on.
-
+[caizoryan/arena-js JavaScript ](https://github.com/caizoryan/arena-js)
 </div>
 
-insert: I stopped working on editor after this point when I transitioned to my next project which is the [publication tool]() sometime in Late March of 2025 when my final ISP presentation was due. To link the work I had been doing to graphic design I cooked up a typesetting/publication design tool which I've been developing since.
+
+<div class='repo'>
+
+date: Mar 13
+
+[caizoryan/overhead-camera JavaScript ](https://github.com/caizoryan/overhead-camera)
+</div>
+
+
 
 <div class='repo'>
 
@@ -146,35 +146,40 @@ date: Mar 14
 </div>
 
 
-<div class='repo'>
-
-date: Mar 13
-
-[caizoryan/overhead-camera JavaScript ](https://github.com/caizoryan/overhead-camera)
-</div>
-
 
 
 <div class='repo'>
 
-date: Mar 10
+date: Mar 26
 
-[caizoryan/arena.js Javascript](https://github.com/caizoryan/arena.js) Are.na Typed API but in JSDoc instead of typescript
+[caizoryan/editor-typesetter JavaScript ](https://github.com/caizoryan/editor-typesetter) For final ISP project, made a publication program prototype that ended up being the large project later on in the year... and the thing I'm currenlty working on.
+
+</div>
+
+insert: I stopped working on editor after this point when I transitioned to my next project which is the [publication tool]() sometime in Late March of 2025 when my final ISP presentation was due. To link the work I had been doing to graphic design I cooked up a typesetting/publication design tool which I've been developing since.
+
+<div class='repo'>
+
+date: Mar 29
+
+[caizoryan/gradex-website JavaScript ](https://github.com/caizoryan/gradex-website) Made the Gradex website with omama.
 
 </div>
 
 <div class='repo'>
 
-date: Mar 10
+date: Mar 31
 
-[caizoryan/arena-js JavaScript ](https://github.com/caizoryan/arena-js)
+[caizoryan/editor-anisha JavaScript ](https://github.com/caizoryan/editor-anisha) Created an instance of editor to run anisha's game in it.
+
 </div>
+
+
+
 
 ### April 2025
 
-April was a big month for doing other people's projects.
-
-
+insert: April was a big month for me because I got to work a lot with other people, either as a collaborator or help out with people's existing projects.
 
 <div class='repo'>
 

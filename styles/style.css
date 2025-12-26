@@ -5,37 +5,37 @@
 	src: url(../fonts/SeismicShockTrial-Medium.ttf);
   
 }
-	@font-face{
-	font-family: 'seismic-shock';
-	font-weight: 300;
-		src: url(../fonts/SeismicShockTrial-Regular.ttf);
-  
-}
-	@font-face{
-		font-family: 'seismic';
-		font-family: 'seismic-shock';
-		font-weight: 600;
-		src: url(../fonts/SeismicShockTrial-SemiBold.ttf);
-  
-}
-	@font-face{
-		font-family: 'seismic';
-		font-weight: 600;
-		src: url(../fonts/SeismicTrial-Bold.ttf);
-  
-}
-	@font-face{
-		font-family: 'seismic';
+@font-face{
+font-family: 'seismic-shock';
+font-weight: 300;
+	src: url(../fonts/SeismicShockTrial-Regular.ttf);
 
-		font-weight: 100;
-		src: url(../fonts/SeismicTrial-Light.ttf);
-  
 }
-	@font-face{
-		font-family: 'seismic';
-		font-weight: 300;
-		src: url(../fonts/SeismicTrial-Medium.ttf);
-  
+@font-face{
+	font-family: 'seismic';
+	font-family: 'seismic-shock';
+	font-weight: 600;
+	src: url(../fonts/SeismicShockTrial-SemiBold.ttf);
+
+}
+@font-face{
+	font-family: 'seismic';
+	font-weight: 600;
+	src: url(../fonts/SeismicTrial-Bold.ttf);
+
+}
+@font-face{
+	font-family: 'seismic';
+
+	font-weight: 100;
+	src: url(../fonts/SeismicTrial-Light.ttf);
+
+}
+@font-face{
+	font-family: 'seismic';
+	font-weight: 300;
+	src: url(../fonts/SeismicTrial-Medium.ttf);
+
 }
 
 :root {
@@ -46,6 +46,7 @@
 	--highlight: var(--background);
 	--alt-highlight: #c8eede;
 	--links: var(--alt-highlight);
+	--light-background:#79b698;
 }
 
 body {
@@ -58,7 +59,12 @@ body {
   font-size: 18.5px;
 }
 
-body h1:first-child {
+body h1:first-child,
+body h2:first-child,
+body h3:first-child,
+body h4:first-child,
+body h5:first-child,
+body h6:first-child {
   margin: 0;
   border: none;
 }
@@ -67,14 +73,15 @@ h1, h2, h3, h4, h5, h6, a {
   font-family:'seismic-shock', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-	border-top: 1px solid #fff8;
-  padding-top: .8em;
+	border-bottom: 1px solid #fff8;
+  padding-bottom: .8em;
 }
 
 /* Headings */
 h1, h2, h3 {
   line-height: 1.3;
-  margin: 2.4em 0 0.6em;
+  margin: 2em 0 0.6em;
+  padding-top: .4em
 }
 h1 { font-size: 4em; }
 h2 { font-size: 3.6em; }
@@ -111,15 +118,20 @@ blockquote {
 }
 
 .repo{
-	margin-top: 3em;
+	margin-top: .5em;
   font-size: .88em;
   max-width: 65%;
+  margin-bottom: 1.5em;
+  background: #fff2;
+  padding: .2em .8em;
 }
 
 .feed-link {
-	border-bottom: 1px solid var(--muted);
+	/* border-bottom: 1px solid var(--muted); */
   padding: .1em .3em;
   margin: 0 .5em;
+	background: var(--light-background);
+	color: var(--background);
 }
 
 .feed-link span {

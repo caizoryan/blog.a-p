@@ -120,7 +120,7 @@ setHookFor("pages/wrapping_2025.md", {
 	},
 	element: (item, child) => `
 &lt;${item.tag} class='feed-link' ${attrsToString(attrs(item))}>
- &lt;span>FEED:&lt;/span> ${child}
+&lt;span>(FEED)&lt;/span>&nbsp;${child}
 &lt;/${item.tag}>`
 })
 
