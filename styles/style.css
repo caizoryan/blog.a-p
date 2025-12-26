@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6, a {
   font-family:'seismic-shock', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
-	border-bottom: 1px solid #fff8;
+	/* border-bottom: 1px solid #fff8; */
   padding-bottom: .8em;
 }
 
@@ -118,13 +118,27 @@ blockquote {
 }
 
 .repo{
-	margin-top: .5em;
+/* margin-top: .5em; */
   font-size: .88em;
   max-width: 65%;
-  margin-bottom: 1.5em;
-  background: #fff2;
-  padding: .2em .8em;
+  /* margin-bottom: 1.5em; */
+  /* background: #fff1; */
+  padding: .2em 0;
+  border-top: .1px solid #fff2;}
+
+img, video {
+margin-top: 1em;
+  max-width: 100%;
 }
+.clip{
+border: 1px solid var(--light-background);
+  padding: 2em;
+  font-size: .7em;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 5px rgba(0,0,0,.1);
+  background: #1d28474d;
+  /* max-width: 45%; */
+  margin-top: 1em;}
 
 .feed-link {
 	/* border-bottom: 1px solid var(--muted); */

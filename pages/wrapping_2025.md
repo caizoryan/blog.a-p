@@ -3,6 +3,16 @@
 
 insert: A lot happened in 2025 and I made a lot of small, medium / large things. As this year is coming to a close, I wanted to take a step back and reflect on the things I made, where these things came from and where do they go next.
 
+insert: This post takes the form of an annotated git log ~~>
+
+<div class='repo'>
+
+date: Date
+
+[caizoryan/linktorepo Langauge]() And the a short little not after that about what this repo was.
+
+</div>
+
 ### January 2025
 
 
@@ -56,7 +66,12 @@ date: Jan 30
 [caizoryan/editor-editor JavaScript ](https://github.com/caizoryan/editor-editor)
 </div>
 
-insert: This was the repo I did most of my work in till about March of 2025. I started this repo because I was really interested in a recursive/bootstappable editor where the editor can implement itself over time + you can make components for specific domains. For instance see [this component](https://feed.a-p.space/blocks/33857682) that is a tile connections editor for a wave function collapse algorithm. Writing tiles directly to json is tedious, so this is essentially is a data editor. This was the idea behind the whole editor-editor. This issue ended up being that it felt very cumbersome to make changes. 
+insert: This was the repo I did most of my work in till about March of 2025. I started this repo because I was really interested in a recursive/bootstappable editor where the editor can implement itself over time + you can make components for specific domains. For instance see this component:
+
+[CLIP](https://feed.a-p.space/blocks/33857682)
+
+insert: that is a tile connections editor for a wave function collapse algorithm. Writing tiles directly to json is tedious, so this is essentially is a data editor. This was the idea behind the whole editor-editor. This issue ended up being that it felt very cumbersome to make changes. 
+
 
 insert: Reflection: I think the main issue with this project was that I tried to make it an end all be all. This project stems from the work I did in 2023 when I implemented an editor for the first time. Back then I though the issue was I was trying to make my own programming language and make the editor for that. The scope for the editor was much smaller then because the language was constrained. But the experience of using the editor was janky at best and that's why that didn't go forward. So to tackle that I tried making this editor a fully inclusive JS editor, with an LSP server + canvas implementation, filesystem, module loading and what not. I think it failed there because managing all these different parts was a lot.
 
@@ -156,7 +171,10 @@ date: Mar 26
 
 </div>
 
-insert: I stopped working on editor after this point when I transitioned to my next project which is the [publication tool]() sometime in Late March of 2025 when my final ISP presentation was due. To link the work I had been doing to graphic design I cooked up a typesetting/publication design tool which I've been developing since.
+insert: I stopped working on editor after this point when I transitioned to my next project which is the [publication tool](https://feed.a-p.space/feed-publication-tool) sometime in Late March of 2025 when my final ISP presentation was due. To link the work I had been doing to graphic design I cooked up a typesetting/publication design tool which I've been developing since.
+
+[CLIP](https://feed.a-p.space/blocks/35462601)
+[CLIP](https://feed.a-p.space/blocks/35440203)
 
 <div class='repo'>
 
@@ -235,6 +253,9 @@ date: Apr 10
 </div>
 
 
+[CLIP](https://feed.a-p.space/blocks/35980243)
+
+
 <div class='repo'>
 
 date: Apr 2
@@ -246,31 +267,37 @@ date: Apr 2
 ### May 2025
 
 
-
 <div class='repo'>
 
-date: May 29
+date: May 1
 
-[caizoryan/notes HTML ](https://github.com/caizoryan/notes) Created a repository to store my Notes.
-  
+[caizoryan/omama-zaid JavaScript ](https://github.com/caizoryan/omama-zaid) Made a website to host omama and zaid's collab project. Displayed at gradex.
+
+</div>
+<div class='repo'>
+
+date: May 4
+
+[caizoryan/anisha-thesis-electron JavaScript ](https://github.com/caizoryan/anisha-thesis-electron) Made an electron version for anisha's game because browser security is a pain. 
+
 </div>
 
 
 <div class='repo'>
 
-date: May 28
+date: May 6
 
-[caizoryan/templater JavaScript ](https://github.com/caizoryan/templater) Created a templating LANG to use JS inside a HTML template.
-  
+[caizoryan/anisha-portfolio JavaScript ](https://github.com/caizoryan/anisha-portfolio) Made a portfolio website for anisha.
+
 </div>
 
 
 <div class='repo'>
 
-date: May 27
+date: May 16
 
-[caizoryan/untitledstudio JavaScript  • Built by @caizoryan @pascal-is-waging](https://github.com/caizoryan/untitledstudio) Created the repo for if-m website. Based on templater.
-
+[caizoryan/gamejam001 GDScript  • Built by @caizoryan @aryamancodes @anisha-vatnani](https://github.com/caizoryan/gamejam001) Did a gamejam with Anisha and Aryaman! was super fun!
+  
 </div>
 
 
@@ -294,52 +321,41 @@ date: May 20
 
 <div class='repo'>
 
-date: May 16
+date: May 27
 
-[caizoryan/gamejam001 GDScript  • Built by @caizoryan @aryamancodes @anisha-vatnani](https://github.com/caizoryan/gamejam001) Did a gamejam with Anisha and Aryaman! was super fun!
+[caizoryan/untitledstudio JavaScript  • Built by @caizoryan @pascal-is-waging](https://github.com/caizoryan/untitledstudio) Created the repo for if-m website. Based on templater.
+
+</div>
+<div class='repo'>
+
+date: May 28
+
+[caizoryan/templater JavaScript ](https://github.com/caizoryan/templater) Created a templating LANG to use JS inside a HTML template.
+  
+</div>
+
+<div class='repo'>
+
+date: May 29
+
+[caizoryan/notes HTML ](https://github.com/caizoryan/notes) Created a repository to store my Notes.
   
 </div>
 
 
-<div class='repo'>
-
-date: May 6
-
-[caizoryan/anisha-portfolio JavaScript ](https://github.com/caizoryan/anisha-portfolio) Made a portfolio website for anisha.
-
-</div>
-
-
-<div class='repo'>
-
-date: May 4
-
-[caizoryan/anisha-thesis-electron JavaScript ](https://github.com/caizoryan/anisha-thesis-electron) Made an electron version for anisha's game because browser security is a pain. 
-
-</div>
-
-
-<div class='repo'>
-
-date: May 1
-
-[caizoryan/omama-zaid JavaScript ](https://github.com/caizoryan/omama-zaid) Made a website to host omama and zaid's collab project. Displayed at gradex.
-
-</div>
 
 ### June 2025
 [NONE!](https://github.com/NONE!])
 
+insert: Travelled to Vancouver and Victoria and then back home to India. Rested, enjoyed the summer and breathed.
+
 ### July 2025
 
 
-
 <div class='repo'>
-
 date: Lisp Jun
 
 [caizoryan/emacs-config Emacs  9](https://github.com/caizoryan/emacs-config) Moved to EMACS!
-
 </div>
 
 ### August 2025

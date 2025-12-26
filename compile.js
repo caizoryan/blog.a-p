@@ -1,34 +1,82 @@
 import fs from 'fs'
 import markdownIt from "./markdown-it/markdown-it.js";
 import { iframescript } from "./iframify.js"
+import { convertRawRowOptionsToStandard } from 'console-table-printer/dist/src/utils/table-helpers.js';
 
+let host = "http://localhost:3000/api";
+let auth = ''
+let options = {
+	headers: {
+		Authorization: `Bearer ${auth}`,
+		cache: "no-store",
+		"Cache-Control": "max-age=0, no-cache",
+		referrerPolicy: "no-referrer",
+	},
+};
 let md = new markdownIt('commonmark')//.use(makrdownItMark);
 
+const image = (block) => `<img src="${block.image.display.url}" />`;
+const media_embed = (block) =>
+	`<span class="media">${block.embed?.html}</span>`;
+
+const media = (block) => `
+	<a href=${block?.source?.url}>
+		<div class="media">
+			<p class="title">${block.title}</p>
+			<img src="${block.image.display.url}" />
+			<p class="metadata">${block.source?.url}</p> 
+		</div>
+	</a>
+`;
+
+const video = (block) =>
+	`<video src=${block.attachment.url} controls loop></video> `;
+const link = (block) =>
+	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
+
+const pdf = (block) => `
+	<a target="_blank" href=${block.attachment.url}>
+		<p class="pdf">
+			<span>
+			${block.title} ${link_svg}
+			</span>
+			<img src="${block.image.display.url}" />
+		</p>
+	</a>
+`;
+
+const fetch_json = (link, options) =>
+	fetch(link, options).then((r) => r.json());
+const get_channel = (slug) => {
+	console.log("getting", slug)
+	return fetch_json(host + "/channels/" + slug, options)
+}
+const get_block = (id) => fetch_json(host + "/blocks/" + id, options);
 let attrs = (item) => {
 	let attrs = item.attrs;
 	if (!attrs) return {};
 	return Object.fromEntries(attrs);
 };
 
-let attrsToString = at => 
-				Object.entries(at)
-					.map(([key, value]) => `${key} = "${value}"`)
-					.join(" ");
+let attrsToString = at =>
+	Object.entries(at)
+		.map(([key, value]) => `${key} = "${value}"`)
+		.join(" ");
 
 let beforeElementHooks = []
 let hookMap = {}
 
-let setHookFor = (path, hook) =>{
+let setHookFor = (path, hook) => {
 	if (!Array.isArray(path)) path = [path]
 
 	path.forEach(path => {
 		hookMap[path]
 			? hookMap[path].push(hook)
 			: hookMap[path] = [hook]
-		})
+	})
 }
 
-function eat(tree) {
+async function eat(tree) {
 	let ret = [];
 	if (!tree) return "";
 	while (tree.length > 0) {
@@ -49,13 +97,14 @@ function eat(tree) {
 			let at_string = attrsToString(at)
 
 			if (!ignore) {
-				let children =  eat(tree);
+				let children = await eat(tree);
 				children = Array.isArray(children) ? children.join("") : children;
 				let done = false
 				for (let i = 0; i < beforeElementHooks.length; i++) {
 					if (done) continue
-					if (beforeElementHooks[i].condition(item, children)) {
-						let el = beforeElementHooks[i].element(item, children)
+					let is = await beforeElementHooks[i].condition(item, children)
+					if (is) {
+						let el = await beforeElementHooks[i].element(item, children)
 						ret.push(el)
 						done = true
 					}
@@ -75,7 +124,7 @@ function eat(tree) {
 						: item.content;
 				ret.push(p);
 			} else {
-				let children =  eat(item.children);
+				let children = await eat(item.children);
 				children = Array.isArray(children) ? children.join("") : children;
 				ret.push(children);
 			}
@@ -86,12 +135,58 @@ function eat(tree) {
 	return ret;
 }
 
-setHookFor(['index.md',"pages/wrapping_2025.md",], {
+setHookFor(['index.md', "pages/wrapping_2025.md"], {
+	condition: (item, child) => {
+		return item.tag == 'a' &&
+			(attrs(item).href.includes('are.na/block')
+			 || attrs(item).href.includes('feed.a-p.space/blocks')
+			)
+	},
+	element: async (item, child) => {
+		let block = await get_block(attrs(item).href.split("/").pop().trim())
+		if (block.class == 'Image') return image(block)
+		// --------------------------------
+		// Attachment
+		// --------------------------------
+		if (block.class == "Attachment") {
+			if (block.attachment.extension == "mp4") {
+				return video(block);
+			} else if (block.attachment.extension == "pdf") {
+				return pdf(block);
+			}
+		}
+
+		// --------------------------------
+		// Media
+		// --------------------------------
+		else if (block.class == "Media") {
+			if (block.class == "Media" && block.embed) {
+				return media_embed(block);
+			}
+			else return media(block);
+
+		}
+		if (block.class == 'Text') {
+			let transformed = await transform(block.content)
+			if (child.trim().toLowerCase() == 'clip') return `<div class='clip'>
+${transformed.slice(0,3).join("\n")}
+
+<a href='https://feed.a-p.space/blocks/${block.id}' target="_blank">
+Read More
+</a>
+</div>`
+			// else return `<div class='text block'>${transformed.join("\n")}</div>`
+		}
+		// let removed = child.replace("insert: ", "")
+	}
+})
+setHookFor(['index.md', "pages/wrapping_2025.md",], {
 	condition: (item, child) => {
 		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
 	},
 	element: (item, child) => {
 		let removed = child.replace("insert: ", "")
+		console.log(removed)
 		return `<${item.tag} class='insert'> ${removed} </${item.tag}>`
 	}
 })
@@ -107,7 +202,7 @@ setHookFor("pages/wrapping_2025.md", {
 })
 
 setHookFor("pages/wrapping_2025.md", {
-	condition: (item, child) =>{
+	condition: (item, child) => {
 		if (item.tag == 'a' && attrs(item).href?.includes('feed.a-p.space')) return true
 		else false
 	},
@@ -136,11 +231,11 @@ let safe_parse = (content) => {
 	}
 };
 
-const MD =  (content) => {
+const MD = async (content) => {
 	let tree, body;
 	tree = safe_parse(content);
 
-	if (tree) body =  eat(tree);
+	if (tree) body = await eat(tree);
 	else body = content;
 
 	return body;
@@ -157,16 +252,16 @@ let html = body => `
 </body>
 <script type='module' src='script.js'></script>
 `
-let transform =  (path) => {
+let transform = async content => MD(content)
+let transformmd = async (path) => {
 	let file = fs.readFileSync("./" + path, { encoding: 'utf-8' })
-	let content =  MD(file);
+	let content = await transform(file);
 	let split = path.split('.')
 	let ext = split.pop()
 	let htmlpath = split.join(".") + '.html'
 	fs.writeFileSync(htmlpath, html(content.join("\n")))
 }
-
-let transformjs =  (path) => {
+let transformjs = async (path) => {
 	let file = fs.readFileSync("./" + path, { encoding: 'utf-8' })
 	let content = `<pre>${file.replaceAll("<", "&lt;")}</pre>`;
 	let split = path.split('.')
@@ -175,20 +270,19 @@ let transformjs =  (path) => {
 }
 
 let files = fs.readdirSync('./', { recursive: true })
-files.forEach(path => {
-	if (path.includes('.git')) return
-	// emacs pain...
-	if (path.includes('#')) return
-	if (path.includes('markdown-it')) return
+for (const path of files) {
+	if (path.includes('.git')) continue
+	if (path.includes('#')) continue
+	if (path.includes('markdown-it')) continue
 
-	if (hookMap[path]){hookMap[path].forEach(e => beforeElementHooks.push(e))}
+	if (hookMap[path]) { hookMap[path].forEach(e => beforeElementHooks.push(e)) }
 
 	let split = path.split('.')
 	let ext = split.pop()
-	if (ext == 'md') transform(path)
-	if (ext == 'js') transformjs(path)
+	if (ext == 'md') await transformmd(path)
+	if (ext == 'js') await transformjs(path)
 
 	beforeElementHooks = []
 
 	console.log(path)
-})
+}
