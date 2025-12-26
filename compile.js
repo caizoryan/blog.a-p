@@ -1,58 +1,12 @@
 import fs from 'fs'
 import markdownIt from "./markdown-it/markdown-it.js";
 import { iframescript } from "./iframify.js"
-import { convertRawRowOptionsToStandard } from 'console-table-printer/dist/src/utils/table-helpers.js';
+import {minimatch} from "minimatch"
+import arena from './extensions/arena.js';
 
-let host = "http://localhost:3000/api";
-let auth = ''
-let options = {
-	headers: {
-		Authorization: `Bearer ${auth}`,
-		cache: "no-store",
-		"Cache-Control": "max-age=0, no-cache",
-		referrerPolicy: "no-referrer",
-	},
-};
 let md = new markdownIt('commonmark')//.use(makrdownItMark);
 
-const image = (block) => `<img src="${block.image.display.url}" />`;
-const media_embed = (block) =>
-	`<span class="media">${block.embed?.html}</span>`;
-
-const media = (block) => `
-	<a href=${block?.source?.url}>
-		<div class="media">
-			<p class="title">${block.title}</p>
-			<img src="${block.image.display.url}" />
-			<p class="metadata">${block.source?.url}</p> 
-		</div>
-	</a>
-`;
-
-const video = (block) =>
-	`<video src=${block.attachment.url} controls loop></video> `;
-const link = (block) =>
-	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
-
-const pdf = (block) => `
-	<a target="_blank" href=${block.attachment.url}>
-		<p class="pdf">
-			<span>
-			${block.title} ${link_svg}
-			</span>
-			<img src="${block.image.display.url}" />
-		</p>
-	</a>
-`;
-
-const fetch_json = (link, options) =>
-	fetch(link, options).then((r) => r.json());
-const get_channel = (slug) => {
-	console.log("getting", slug)
-	return fetch_json(host + "/channels/" + slug, options)
-}
-const get_block = (id) => fetch_json(host + "/blocks/" + id, options);
-let attrs = (item) => {
+export let attrs = (item) => {
 	let attrs = item.attrs;
 	if (!attrs) return {};
 	return Object.fromEntries(attrs);
@@ -64,7 +18,11 @@ let attrsToString = at =>
 		.join(" ");
 
 let beforeElementHooks = []
+let styles = []
 let hookMap = {}
+let styleMap = {
+	"pages/wrapping_2025.md": ['repo.css']
+}
 
 let setHookFor = (path, hook) => {
 	if (!Array.isArray(path)) path = [path]
@@ -135,61 +93,19 @@ async function eat(tree) {
 	return ret;
 }
 
-setHookFor(['index.md', "pages/wrapping_2025.md"], {
-	condition: (item, child) => {
-		return item.tag == 'a' &&
-			(attrs(item).href.includes('are.na/block')
-			 || attrs(item).href.includes('feed.a-p.space/blocks')
-			)
-	},
-	element: async (item, child) => {
-		let block = await get_block(attrs(item).href.split("/").pop().trim())
-		if (block.class == 'Image') return image(block)
-		// --------------------------------
-		// Attachment
-		// --------------------------------
-		if (block.class == "Attachment") {
-			if (block.attachment.extension == "mp4") {
-				return video(block);
-			} else if (block.attachment.extension == "pdf") {
-				return pdf(block);
-			}
-		}
+setHookFor(["*", "*/*"], arena)
 
-		// --------------------------------
-		// Media
-		// --------------------------------
-		else if (block.class == "Media") {
-			if (block.class == "Media" && block.embed) {
-				return media_embed(block);
-			}
-			else return media(block);
-
-		}
-		if (block.class == 'Text') {
-			let transformed = await transform(block.content)
-			if (child.trim().toLowerCase() == 'clip') return `<div class='clip'>
-${transformed.slice(0,3).join("\n")}
-
-<a href='https://feed.a-p.space/blocks/${block.id}' target="_blank">
-Read More
-</a>
-</div>`
-			// else return `<div class='text block'>${transformed.join("\n")}</div>`
-		}
-		// let removed = child.replace("insert: ", "")
-	}
-})
-setHookFor(['index.md', "pages/wrapping_2025.md",], {
+setHookFor("**/*.md", {
 	condition: (item, child) => {
 		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
 	},
 	element: (item, child) => {
 		let removed = child.replace("insert: ", "")
-		console.log(removed)
 		return `<${item.tag} class='insert'> ${removed} </${item.tag}>`
 	}
 })
+
+
 
 setHookFor("pages/wrapping_2025.md", {
 	condition: (item, child) => {
@@ -201,7 +117,7 @@ setHookFor("pages/wrapping_2025.md", {
 	}
 })
 
-setHookFor("pages/wrapping_2025.md", {
+setHookFor("**/*.md", {
 	condition: (item, child) => {
 		if (item.tag == 'a' && attrs(item).href?.includes('feed.a-p.space')) return true
 		else false
@@ -241,27 +157,30 @@ const MD = async (content) => {
 	return body;
 };
 
-let html = body => `
+let stylesheet = e => "<link rel='stylesheet' href='/styles/" + e + "'>"
+let html = (body, styles = []) => `
 <!DOCTYPE html>
 <html>
 <head>
 	<link rel="stylesheet" href="/styles/style.css">
+	${styles.map(stylesheet).join("")}
 </head> 
 <body>
 	${body}
 </body>
 <script type='module' src='script.js'></script>
 `
-let transform = async content => MD(content)
-let transformmd = async (path) => {
+
+export let transform = async content => MD(content)
+export let transformmd = async (path) => {
 	let file = fs.readFileSync("./" + path, { encoding: 'utf-8' })
 	let content = await transform(file);
 	let split = path.split('.')
 	let ext = split.pop()
 	let htmlpath = split.join(".") + '.html'
-	fs.writeFileSync(htmlpath, html(content.join("\n")))
+	fs.writeFileSync(htmlpath, html(content.join("\n"), styles))
 }
-let transformjs = async (path) => {
+export let transformjs = async (path) => {
 	let file = fs.readFileSync("./" + path, { encoding: 'utf-8' })
 	let content = `<pre>${file.replaceAll("<", "&lt;")}</pre>`;
 	let split = path.split('.')
@@ -270,12 +189,25 @@ let transformjs = async (path) => {
 }
 
 let files = fs.readdirSync('./', { recursive: true })
+
 for (const path of files) {
 	if (path.includes('.git')) continue
+	if (path.includes('fonts')) continue
+	if (path.includes('node_modules')) continue
 	if (path.includes('#')) continue
 	if (path.includes('markdown-it')) continue
 
-	if (hookMap[path]) { hookMap[path].forEach(e => beforeElementHooks.push(e)) }
+	Object.entries(hookMap).forEach(([glob, hooks]) => {
+		if (minimatch(path, glob)){
+			hooks.forEach(e => beforeElementHooks.push(e))
+		}
+	})
+
+	Object.entries(styleMap).forEach(([glob, styleList]) => {
+		if (minimatch(path, glob)){
+			styleList.forEach(e => styles.push(e))
+		}
+	})
 
 	let split = path.split('.')
 	let ext = split.pop()
@@ -284,5 +216,4 @@ for (const path of files) {
 
 	beforeElementHooks = []
 
-	console.log(path)
 }

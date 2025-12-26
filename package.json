@@ -1,0 +1,15 @@
+{
+  "name": "blog.a-p",
+  "version": "1.0.0",
+  "description": "Blog for A-P. iterating on research.if-m",
+  "main": "compile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimatch": "^10.1.1"
+  }
+}

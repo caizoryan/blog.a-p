@@ -40,7 +40,7 @@ font-weight: 300;
 
 :root {
 	--color: white;
-	--page-margin: 20px;
+	--page-margin: 80px;
 	--muted: #e8eede;
 	--background: #20411d;
 	--highlight: var(--background);
@@ -49,13 +49,19 @@ font-weight: 300;
 	--light-background:#79b698;
 }
 
+@media only screen and (max-width: 850px) {
+  :root {
+		--page-margin: 20px;
+  }
+}
+
 body {
   font-family: 'ABC Oracle Unlicensed Trial', sans-serif;
   line-height: 1.6;
   color: var(--color);
 	background: var(--background);
   max-width: 72ch;
-  margin: 0 8em;
+  margin: 0 var(--page-margin);
   font-size: 18.5px;
 }
 
@@ -117,17 +123,8 @@ blockquote {
   margin: 1em 0;
 }
 
-.repo{
-/* margin-top: .5em; */
-  font-size: .88em;
-  max-width: 65%;
-  /* margin-bottom: 1.5em; */
-  /* background: #fff1; */
-  padding: .2em 0;
-  border-top: .1px solid #fff2;}
-
 img, video {
-margin-top: 1em;
+	margin-top: 1em;
   max-width: 100%;
 }
 .clip{
@@ -138,7 +135,14 @@ border: 1px solid var(--light-background);
   box-shadow: 0 0 15px 5px rgba(0,0,0,.1);
   background: #1d28474d;
   /* max-width: 45%; */
-  margin-top: 1em;}
+  margin-top: 1em;
+}
+.clip h1,
+.clip h2,
+.clip h3
+{
+  margin: 0;
+}
 
 .feed-link {
 	/* border-bottom: 1px solid var(--muted); */

@@ -116,21 +116,11 @@ date: Feb 27
 ### March 2025
 
 
-
 <div class='repo'>
 
 date: Mar 10
 
-[caizoryan/arena.js Javascript](https://github.com/caizoryan/arena.js) Are.na Typed API but in JSDoc instead of typescript
-
-</div>
-
-
-<div class='repo'>
-
-date: Mar 10
-
-[caizoryan/arena-js JavaScript ](https://github.com/caizoryan/arena-js)
+[caizoryan/arena-js JavaScript ](https://github.com/caizoryan/arena-js) Are.na Typed API but in JSDoc instead of typescript
 </div>
 
 
@@ -173,8 +163,8 @@ date: Mar 26
 
 insert: I stopped working on editor after this point when I transitioned to my next project which is the [publication tool](https://feed.a-p.space/feed-publication-tool) sometime in Late March of 2025 when my final ISP presentation was due. To link the work I had been doing to graphic design I cooked up a typesetting/publication design tool which I've been developing since.
 
-[CLIP](https://feed.a-p.space/blocks/35462601)
 [CLIP](https://feed.a-p.space/blocks/35440203)
+[CLIP](https://feed.a-p.space/blocks/35462601)
 
 <div class='repo'>
 
@@ -225,6 +215,7 @@ date: Apr 21
 
 </div>
 
+[CLIP](https://feed.a-p.space/blocks/36156603)
 
 <div class='repo'>
 
