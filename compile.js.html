@@ -176,6 +176,7 @@ let html = (body, styles = []) => `
 &lt;body>
 	${body}
 &lt;/body>
+&lt;script type='module' src='/script.js'>&lt;/script>
 `
 
 export let transform = async content => MD(content)
@@ -226,3 +227,4 @@ for (const path of files) {
 }
 </pre>
 </body>
+<script type='module' src='/script.js'></script>
