@@ -8,6 +8,7 @@ insert: Here's my first blog post! (WIP)
 [Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
 
 
+<img src="https://pketh.org/images/2025/human-tools/omw.webp" style='margin-top: 1em;width: 350px;'></img>
 
 ### Here is a codeblock
 Codeblocks are runnable :) play around!
@@ -22,3 +23,4 @@ body.innerHTML = "<h1>Hello world!</h1>"
 console.log("running")
 console.log("check console")
 ```
+
