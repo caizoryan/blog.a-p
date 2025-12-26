@@ -168,7 +168,6 @@ let html = (body, styles = []) => `
 <body>
 	${body}
 </body>
-<script type='module' src='script.js'></script>
 `
 
 export let transform = async content => MD(content)
