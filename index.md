@@ -1,4 +1,4 @@
-# BLOG A-P
+# BLOG
 
 Hey there person! I hope you're doing well :)
 
@@ -10,11 +10,15 @@ insert: Here's my first blog post! (WIP)
 
 
 ### Here is a codeblock
-Codeblocks are runnable
+Codeblocks are runnable :) play around!
+
 ```js-run
-import {test} from "./test.js"
-document.body.style.backgroundColor = 'beige'
-document.body.style.fontFamily = 'monospace'
-document.body.innerHTML = test
+let body = document.body
+
+body.style.backgroundColor = 'beige'
+body.style.fontFamily = 'monospace'
+body.innerHTML = "<h1>Hello world!</h1>"
+
 console.log("running")
+console.log("check console")
 ```

@@ -137,28 +137,11 @@ let safe_parse = (content) => {
 };
 
 const MD =  (content) => {
-
-	// if (content.includes('# How templater work')) debug_print = true
-	// else debug_print = false
-
 	let tree, body;
 	tree = safe_parse(content);
 
-	// if (debug_print) {
-	// 	fs.writeFileSync("templater.md", content)
-	// 	let templater = fs.readFileSync("./templater.md", { encoding: "utf-8" })
-	// 	tree = safe_parse(templater);
-	// 	console.log(tree)
-	// }
-
-	// else {
-	// }
-
 	if (tree) body =  eat(tree);
 	else body = content;
-
-	//console.log('body', body)
-	//	console.log("content:", content)
 
 	return body;
 };

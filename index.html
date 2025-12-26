@@ -5,24 +5,30 @@
 	<link rel="stylesheet" href="/styles/style.css">
 </head> 
 <body>
-	<h1> BLOG A-P </h1>
+	<h1> BLOG </h1>
 <p> Hey there person! I hope you're doing well :) </p>
 <p> Welcome to my blog. I don't have a lot of stuff here yet, rather there's just one post. This blog runs on the same engine that powers <a href = "https://research.if-m.works"> research.if-m </a>. </p>
 <p class='insert'> Here's my first blog post! (WIP)<br></br><a href = "./pages/wrapping_2025.html"> Reflecting, Recaping and Wrapping up 2025 </a> </p>
 <h3> Here is a codeblock </h3>
-<p> Codeblocks are runnable </p>
+<p> Codeblocks are runnable :) play around! </p>
 <div class='two-col codeblock'>
-		<textarea>import {test} from "./test.js"
-document.body.style.backgroundColor = 'beige'
-document.body.style.fontFamily = 'monospace'
-document.body.innerHTML = test
+		<textarea>let body = document.body
+
+body.style.backgroundColor = 'beige'
+body.style.fontFamily = 'monospace'
+body.innerHTML = "<h1>Hello world!</h1>"
+
 console.log("running")
+console.log("check console")
 </textarea>
-		<iframe srcdoc='<body></body><script type="module">import {test} from "./test.js"
-document.body.style.backgroundColor = 'beige'
-document.body.style.fontFamily = 'monospace'
-document.body.innerHTML = test
+		<iframe srcdoc='<body></body><script type="module">let body = document.body
+
+body.style.backgroundColor = 'beige'
+body.style.fontFamily = 'monospace'
+body.innerHTML = "<h1>Hello world!</h1>"
+
 console.log("running")
+console.log("check console")
 </script>'></iframe>
 		<button>run</button>
 	</div>
