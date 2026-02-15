@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+	
+</head> 
+<body>
+	<h1> Are.na Canvas and the open file </h1>
+<blockquote> <p> Awesome sauce gang. Tonight we steal the moon! </p> </blockquote>
+<p> We're  going to be implementing an Are.na Canvas. So something like a figma or a miro whiteboard, but the content will be Are.na blocks and channels. </p>
+<p> <a href = ""> INSERT IMAGE OF whiteborards </a> </p>
+<p> In the implementation, we're going to use <a href = "https://jsoncanvas.org/spec/1.0/"> this spec </a>. What is this you ask? It is a spec for a file format for infinite canvas apps. The benefit of using this is that if we make our app import and export this file format; then the file can be used in other apps such as Obsidian or Kinopio. Open file formats facilitate interoperability. You can read a little bit about it <a href = "https://obsidian.md/blog/json-canvas/"> here </a> for more details. </p>
+<ul> <li> <p> Get a channel's contents. </p> </li><li> <p> check if there is a block title .canvas and if it parses as canvas data. </p> </li><li> <p> parse data and assign all blocks location </p> </li><li> <p> when block moves, update this canvas data </p> </li><li> <p> save button to sync it back </p> </li> </ul>
+<pre>nodes: [
+  // text block
+  {
+	id: 0,
+	type: 'text',
+	text: 'whatevere text block',
+	x: 0,
+	y: 0,
+	width: 0,
+	height: 0,
+  },
+  
+  
+  // link
+  {
+	type: 'link',
+	url: 'linktourl',
+	...
+  }
+
+  // everything else
+  {
+	type: 'link',
+	url: 'link to are.na block',
+	...
+  }
+]
+
+</pre>
+<p> An obsidian importer for this can transform links to blocks to files that can be linked better or something. </p>
+</body>
+<script type='module' src='/script.js'></script>

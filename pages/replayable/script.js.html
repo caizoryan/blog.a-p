@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="/styles/style.css">
+	
+</head> 
+<body>
+	<pre>import { dom } from "../../lib/dom.js"
+import { drag } from "./drag.js"
+
+console.log("hello world")
+
+let colors = ['red', 'green']
+let arr = ["0", "1", ['2,0', '2, 1']]
+
+let jsconcopy = d => JSON.parse(JSON.stringify(d))
+
+let nested = (arr) => {
+	let undo = []
+	let tracking = true
+	let doundo = () => {
+		tracking = false
+		let action = undo.pop()
+		if (action) apply(...action)
+		tracking = true
+	}
+	let apply = (location, action, value) => {
+		let ref = getref(location, arr)
+		if (action == 'push') {
+			ref.push(value)
+			if (tracking) undo.push([[...location], 'pop'])
+		}
+
+		else if (action == 'pop') {
+			let removed = ref.pop()
+			if (tracking) undo.push([[...location], 'push', removed])
+		}
+
+		else if (action == 'insert') {
+			ref.splice(value[0], 0, value[1])
+			if (tracking) undo.push([[...location], 'remove', [value[0], 1]])
+		}
+
+		else if (action == 'log') {
+			console.log(ref)
+		}
+
+		else if (action == 'remove') {
+			let [removed] = ref.splice(value[0], value[1])
+			if (tracking) undo.push([[...location], 'insert',
+			[value[0], removed]])
+		}
+	}
+	return {
+		tr: apply, arr, doundo
+	}
+}
+
+let getref = (address, arr) => {
+	let copy = [...address]
+	let index = copy.shift()
+	if (copy.length == 0) return arr[index]
+	return getref(copy, arr[index])
+}
+
+let a = nested(arr)
+
+let transactions = [
+	[[2], 'push', ['2,2,0', '2,2,1']],
+	[[2, 2], 'insert', [1, { "hello": "world" }]],
+	[[2, 2], 'insert', [1, 'inserted after 2,2,0']],
+	[[2, 2], 'insert', [2, 'inserted after previous insert']],
+]
+const array = (arr, ind = 0) => {
+	let cc = colors[ind % colors.length];
+
+	return ["div.array",
+		...arr.map((a, i) => {
+			let c = colors[(ind + i) % colors.length];
+			if (typeof a == "number") return ['span.item', { style: "color: " + c }, a + ""]
+			else if (typeof a == "string") return ['span.item', { style: "color: " + c }, '"' + a + '"']
+			else if (Array.isArray(a)) return array(a, ind + i);
+			else if (typeof a == 'object') return object(a, ind + i);
+			else return ['span.item', { style: "color: " + c }, a + ""]
+		})]
+};
+
+const object = (obj, ind = 0) => {
+	return ["div.object", ...Object.entries(obj).map(
+		([key, value], i) => {
+			let c = colors[(ind + i) % colors.length];
+			let valueel
+			if (typeof value == "number") valueel = ['span.item', { style: "color: " + c }, value + ""]
+			else if (typeof value == "string") valueel = ['span.item', { style: "color: " + c }, '"' + value + '"']
+			else if (Array.isArray(value)) valueel = array(value, ind + i);
+			else if (typeof value == 'object') valueel = object(value, ind + i);
+			else valueel = ['span.item', { style: "color: " + c }, value + ""]
+			return ["div.property", ["span.item", key], valueel]
+		})]
+}
+
+let actions = {
+	"insert random": (location) => [location, 'insert', [getref(location, arr).length, Math.floor(Math.random() * 1000)]],
+	"ok": (location) => [[2, 2, 1, "hello"], 'log']
+}
+
+let position = { x: 0, y: 0 }
+let render = () => {
+	let btn = (t, f) => ['button', { onclick: () => { f(); render() } }, t]
+	let root = [
+		'.container', { style: `position: absolute; left:${position.x}px;top:${position.y}px` },
+		array(arr),
+		[".ui",
+			btn('undo', a.doundo),
+			btn('next', () => a.tr(...transactions.shift())),
+			...Object.entries(actions).map(([text, fn]) => btn(text, () => a.tr(...fn([2]))))
+		]
+	]
+
+	document.body.innerHTML = ''
+	document.body.appendChild(dom(root))
+	let cunto = document.querySelector('.container')
+	drag(cunto, {
+		set_left: (p) => {
+			position.x = p
+			cunto.style.left = p + "px"
+		}, set_top: (p) => {
+			position.y = p
+			cunto.style.top = p + "px"
+		}
+	})
+}
+
+document.head.innerHTML += `&lt;style>
+	.array{border: 1px solid black; padding: .1em;line-height: 2em;width: max-content;}
+	.item{padding: .2em; background: yellow; margin-right: .5em;}
+	.object{background: lightblue; padding: 1em;}
+&lt;/style>`
+
+
+// reversible array
+
+render()
+</pre>
+</body>
+<script type='module' src='/script.js'></script>

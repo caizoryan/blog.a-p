@@ -217,6 +217,7 @@ date: Apr 21
 
 [CLIP](https://feed.a-p.space/blocks/36156603)
 
+
 <div class='repo'>
 
 date: 16 Apr
@@ -351,11 +352,9 @@ date: Lisp Jun
 
 ### August 2025
 
-
 <div class='repo'>
 
 date: Aug 21
-
 [caizoryan/w1-proposal JavaScript ](https://github.com/caizoryan/w1-proposal) Proposal for independant workshop. Made using typesetter tool.
 
 </div>
@@ -364,7 +363,6 @@ date: Aug 21
 <div class='repo'>
 
 date: Aug 10
-
 [caizoryan/a-p-space-new JavaScript ](https://github.com/caizoryan/a-p-space-new) Tried to iterate on my personal website.
 
 </div>
@@ -373,18 +371,17 @@ date: Aug 10
 <div class='repo'>
 
 date: Aug 1
-
 [caizoryan/menu-project JavaScript ](https://github.com/caizoryan/menu-project) Used the publication tool to make a menu! First commercial project using only my own tools and no Adobe Tools! Printed and fabricated myself.
   
 </div>
 
+[CLIP](https://feed.a-p.space/blocks/39365447)
 
 <div class='repo'>
 
 date: Aug 1
 
 [caizoryan/website-examples JavaScript ](https://github.com/caizoryan/website-examples) Website examples to send to Raj Mamu for his own portfolio.
-
 </div>
 
 ### September 2025
@@ -393,18 +390,15 @@ date: Aug 1
 <div class='repo'>
 
 date: Sep 20
-
 [caizoryan/arena_notetaker JavaScript ](https://github.com/caizoryan/arena_notetaker) Are.na Templating notetakerish frontendy thing... don't know where I was going with this.
 
 </div>
 
 ### October 2025
 
-
 <div class='repo'>
 
 date: Oct 30
-
 [caizoryan/accordian_book JavaScript ](https://github.com/caizoryan/accordian_book) Iteration on publication tool to use Accordion book format.
   
 </div>
@@ -413,7 +407,6 @@ date: Oct 30
 <div class='repo'>
 
 date: Oct 19
-
 [caizoryan/arena_publisher JavaScript ](https://github.com/caizoryan/arena_publisher) Iteration on publication tool to be collaborative using are.na as it's backend
   
 </div>
@@ -422,7 +415,6 @@ date: Oct 19
 <div class='repo'>
 
 date: Oct 14
-
 [caizoryan/arena-spending JavaScript ](https://github.com/caizoryan/arena-spending) Revamped and re-wrote my spending tracker based on are.na API.
 
 </div>
@@ -435,8 +427,11 @@ date: Oct 14
 date: Nov 25
 
 [caizoryan/pagefold JavaScript ](https://github.com/caizoryan/pagefold) Iteration on the publication tool to use folding calulcations I did. To make compositions and see them folded up.
+
   
 </div>
+
+[CLIP](https://feed.a-p.space/blocks/41831780)
 
 
 <div class='repo'>
@@ -455,6 +450,8 @@ date: Nov 17
 [caizoryan/creativetalk JavaScript ](https://github.com/caizoryan/creativetalk) Gave a presentation at Creative coding toronto meetup. Built my own presentation tool for that.
   
 </div>
+
+[CLIP](https://feed.a-p.space/blocks/41244068)
 
 
 <div class='repo'>
@@ -499,3 +496,27 @@ date: Dec 14
 [caizoryan/pdfrenderer JavaScript ](https://github.com/caizoryan/pdfrenderer) Implemented a PDF rendering backend for the publication tool.
 
 </div>
+
+
+December 2025
+
+</div>
+
+<div class='repo'>
+
+date: Dec 23
+[caizoryan/blog.a-p HTML](https://github.com/caizoryan/blog.a-p) made a repo for this website
+
+</div>
+
+<div class='repo'>
+
+date: Dec 31
+[caizoryan/arena-canvas HTML](https://github.com/caizoryan/arena-canvas) And for the final trick of the year! Made Are.na Canvas... 
+
+</div>
+
+[CLIP](https://feed.a-p.space/blocks/42452629)
+
+insert: To Be Continued...
+

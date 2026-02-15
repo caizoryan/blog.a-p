@@ -5,7 +5,7 @@ Hey there person! I hope you're doing well :)
 Welcome to my blog. I don't have a lot of stuff here yet, rather there's just one post. This blog runs on the same engine that powers [research.if-m](https://research.if-m.works). 
 
 insert: Here's my first blog post! (WIP)
-[CLIP: Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
+[Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
 
 [caizoryan/editor JavaScript ](https://github.com/caizoryan/editor) Began this year with starting the [editor-editor](https://feed.a-p.space/feed-editor-editor) project. This was the prelimnary repo. Later renamed it to editor-editor
 
