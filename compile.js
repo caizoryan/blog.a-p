@@ -1,10 +1,12 @@
 import fs from 'fs'
 import markdownIt from "./markdown-it/markdown-it.js";
+import markdownItMark from "./markdown-it/markdown-it-mark.js";
+import { footnote_plugin } from "./markdown-it/markdown-it-footnote.js"
 import { iframescript } from "./iframify.js"
-import {minimatch} from "minimatch"
+import { minimatch } from "minimatch"
 import arena from './extensions/arena.js';
 
-let md = new markdownIt('commonmark')//.use(makrdownItMark);
+let md = new markdownIt('commonmark').use(footnote_plugin).use(markdownItMark);
 
 export let attrs = (item) => {
 	let attrs = item.attrs;
@@ -40,6 +42,8 @@ async function eat(tree) {
 	while (tree.length > 0) {
 		let item = tree.shift();
 		if (item.nesting === 1) {
+			// console.log(item.type)
+			if (item.type.includes('foot')) console.log("BROOOO", item)
 			let at = attrs(item);
 			let ignore = false;
 
@@ -69,17 +73,23 @@ async function eat(tree) {
 				}
 
 				if (!done) ret.push(`<${item.tag}${at_string ? " " + at_string : ''}> ${children} </${item.tag}>`);
-
 			}
 		}
 
 		if (item.nesting === 0) {
+			// console.log(item.type)
+			if (item.type?.includes('foot')) console.log("BROOOOSEE", item)
+			// if (item.content && !item.children && item.content.includes('^')) console.log(item)
 			if (!item.children || item.children.length === 0) {
-				let p = item.type === "softbreak"
-					? "<br></br>"
-					: item.type === "fence"
-						? codeblock(item)
-						: item.content;
+				let p
+				if (item.type == 'softbreak') p = "<br></br>"
+				else if (item.type == 'footnote_anchor')
+					p = `<a id="footnote-anchor-${item.meta.id}" href="#footnote-ref-${item.meta.id}"> back </a>`
+				else if (item.type == 'footnote_ref')
+					p = `<a href="#footnote-anchor-${item.meta.id}"  id="footnote-ref-${item.meta.id}"> [${item.meta.label}] </a>`
+				else if (item.type == 'fence') p = codeblock(item)
+				else p = item.content;
+
 				ret.push(p);
 			} else {
 				let children = await eat(item.children);
@@ -105,6 +115,18 @@ setHookFor("**/*.md", {
 	}
 })
 
+setHookFor("pages/publication_engine.md", {
+	condition: (item, child) => {
+		if (item.tag == 'a') {
+			return false
+		}
+		else false
+	},
+	element: (item, child) => {
+		let removed = child.replace("date: ", "")
+		return `<${item.tag} class='date'> ${removed} </${item.tag}>`
+	}
+})
 
 
 setHookFor("pages/wrapping_2025.md", {
@@ -198,13 +220,13 @@ for (const path of files) {
 	if (path.includes('markdown-it')) continue
 
 	Object.entries(hookMap).forEach(([glob, hooks]) => {
-		if (minimatch(path, glob)){
+		if (minimatch(path, glob)) {
 			hooks.forEach(e => beforeElementHooks.push(e))
 		}
 	})
 
 	Object.entries(styleMap).forEach(([glob, styleList]) => {
-		if (minimatch(path, glob)){
+		if (minimatch(path, glob)) {
 			styleList.forEach(e => styles.push(e))
 		}
 	})

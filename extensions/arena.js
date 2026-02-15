@@ -1,4 +1,4 @@
-import {transform, attrs} from "../compile.js"
+import { transform, attrs } from "../compile.js"
 
 let host = "http://localhost:3000/api";
 let auth = ''
@@ -47,11 +47,12 @@ const get_channel = (slug) => {
 	return fetch_json(host + "/channels/" + slug, options)
 }
 const get_block = (id) => fetch_json(host + "/blocks/" + id, options);
+
 export default {
 	condition: (item, child) => {
 		return item.tag == 'a' &&
 			(attrs(item).href.includes('are.na/block')
-			 || attrs(item).href.includes('feed.a-p.space/blocks')
+				|| attrs(item).href.includes('feed.a-p.space/blocks')
 			)
 	},
 	element: async (item, child) => {
@@ -86,7 +87,7 @@ export default {
 			let transformed = await transform(block.content)
 			if (child.trim().toLowerCase() == 'clip') return `<div class='clip'>
 <a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
-${transformed.slice(0,4).join("\n")}
+${transformed.slice(0, 4).join("\n")}
 
 <a href='https://feed.a-p.space/blocks/${block.id}' target="_blank">
 Read More
