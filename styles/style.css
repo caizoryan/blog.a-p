@@ -210,6 +210,11 @@ video {
 	--muted: var(--highlight);
 }
 
+.caption {
+	font-size: .8em;
+	color: var(--muted);
+}
+
 br {
 	display: block;
 	margin: 1px 0;

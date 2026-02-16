@@ -42,8 +42,6 @@ async function eat(tree) {
 	while (tree.length > 0) {
 		let item = tree.shift();
 		if (item.nesting === 1) {
-			// console.log(item.type)
-			if (item.type.includes('foot')) console.log("BROOOO", item)
 			let at = attrs(item);
 			let ignore = false;
 
@@ -77,9 +75,6 @@ async function eat(tree) {
 		}
 
 		if (item.nesting === 0) {
-			// console.log(item.type)
-			if (item.type?.includes('foot')) console.log("BROOOOSEE", item)
-			// if (item.content && !item.children && item.content.includes('^')) console.log(item)
 			if (!item.children || item.children.length === 0) {
 				let p
 				if (item.type == 'softbreak') p = "<br></br>"
@@ -104,7 +99,6 @@ async function eat(tree) {
 }
 
 setHookFor(["*", "*/*"], arena)
-
 setHookFor("**/*.md", {
 	condition: (item, child) => {
 		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
@@ -112,6 +106,16 @@ setHookFor("**/*.md", {
 	element: (item, child) => {
 		let removed = child.replace("insert: ", "")
 		return `<${item.tag} class='insert'> ${removed} </${item.tag}>`
+	}
+})
+
+setHookFor("**/*.md", {
+	condition: (item, child) => {
+		return item.tag == 'p' && child.split(" ")[0] == 'caption:'
+	},
+	element: (item, child) => {
+		let removed = child.replace("caption: ", "")
+		return `<${item.tag} class='caption'> ${removed} </${item.tag}>`
 	}
 })
 
@@ -127,7 +131,6 @@ setHookFor("pages/publication_engine.md", {
 		return `<${item.tag} class='date'> ${removed} </${item.tag}>`
 	}
 })
-
 
 setHookFor("pages/wrapping_2025.md", {
 	condition: (item, child) => {
