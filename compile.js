@@ -70,7 +70,14 @@ async function eat(tree) {
 					}
 				}
 
-				if (!done) ret.push(`<${item.tag}${at_string ? " " + at_string : ''}> ${children} </${item.tag}>`);
+				if (!done) {
+					if (item.tag != '') ret.push(`<${item.tag}${at_string ? " " + at_string : ''}> ${children} </${item.tag}>`);
+					else {
+						if (item.type == 'footnote_open')
+							ret.push(`<div class='footnote'> <p>[${item.meta.id}]</p> ${children} </div>`)
+						else ret.push(children)
+					}
+				}
 			}
 		}
 

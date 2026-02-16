@@ -9,17 +9,58 @@
 	<h1> Publication Engine </h1>
 <blockquote> <p> I literally cannot think of a good name. </p> </blockquote>
 <p> Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication through writing programs. </p>
-<p> This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023) <a href="#footnote-anchor-0"  id="footnote-ref-0"> [1] </a>. For which I made this p5 based typesetting tool that gave words weight depending on their word length. </p>
+<p> This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5MS9vcmlnaW5hbF9jOTAwNDE3YjA2YjA0NTQ0NDBjOTYyZGEwZTlkNDI5Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p class='caption'> Words weight depending on their word length </p>
 <h3> Getting things off the ground </h3>
 <p> Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways. </p>
 <p> <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
-<ul> <li> <p> also linked text boxes so words that overflow from one can go into the next. </p> </li> </ul>
+<p> Plus(+) also linked text boxes so words that overflow from one can go into the next. </p>
 <p> <video src=https://attachments.are.na/35462595/4cda268f3e505774242f8cbb2edea6f5.mp4?1742781867 controls loop></video>  </p>
 <p class='caption'> First implementation of linked text boxes. </p>
 <p> Eventually I also added hyphenation (can see below marked by red text), a simple column based grid and the ability to collect spreads together into a 'Book'. </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNTkzMTc3MC9vcmlnaW5hbF83Yzc2OTY5MGU4MjdiYTA1ZTkwMzYxZWFlMWRiOGJhNS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
 <p> At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk aboutlater. </p>
 <p> <video src=https://attachments.are.na/35931897/076ef52490459f8e6edd87be3d06828e.mp4?1744428133 controls loop></video>  </p>
-<> <> <p> Words weight depending on their word length <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5MS9vcmlnaW5hbF9jOTAwNDE3YjA2YjA0NTQ0NDBjOTYyZGEwZTlkNDI5Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><a id="footnote-anchor-0" href="#footnote-ref-0"> back </a> </p> </> </>
+<p> Another thing that isn't visible in the screen grabs is the management of DPI and Units. Essentially, I wanted to use typographic units, such as ems, picas, points and inches. And these units also need to correspond to the paper sizing. Plus, I was doing all of this in p5, which meant everything was raster, so it didn't print great unless you upscaled it to have about 300DPI which wouldn't fit on the screen and be really expensive and slow to draw. </p>
+<p> Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one. </p>
+<h3> Imposition </h3>
+<p> Once I had basic text formatting and layout down + a grid system to locate and position the items onto a page, a data structure/interface to save data and easily express these elements and a Scale that manages sizing for different DPIs I was almost done. The only thing left to figure out was imposition. </p>
+<p> How do I turn 2D surfaces ~> Spreads into printable sheets that can be bound as a booklet. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzY0MTMyMS9vcmlnaW5hbF9hYjhiZDIxMmM1MGQ4NzI2MjFlY2JkODgzMzBjMzkyZC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> This took some time to figure out. </p>
+<p> <video src=https://attachments.are.na/43641418/b95b290090840203dc8402808f6d0bcc.mp4?1771217450 controls loop></video>  </p>
+<p> I had to simulate this process by moving pieces of paper around or drawing and making arrows to slowly understand what the pattern was. Once I did that a few times I was able to write some helper functions that given an array of page numbers: </p>
+<pre>let pages = [[0,1], [2, 3], [4, 5], [6, 7], [8, 9], [10,11], [12, 0]]
+</pre>
+<p> Would return imposed pages like this </p>
+<pre>let imposed = imposePages(pages)
+// imposed = [[12, 1], [2, 11], [4, 9], [6, 7], [8,5],  [10, 3]]
+</pre>
+<p> I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And just how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun! </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzY0MTMxOC9vcmlnaW5hbF9iNmJkYjBiMjE5MzQ2NDM3ODcwN2E4OGU0MWRjY2E5MS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<h3> Vertical Offsets </h3>
+<p> With imposition figured out, I had all the first principles that are (probably) necessary for a publication software down. </p>
+<p> It was time to intervene! </p>
+<p> Naturally, since I had just spend so much time trying to figure out imposition, that's where I ended up intervening. </p>
+<p> <video src=https://attachments.are.na/36148752/d92c25feeff8694a642becc15f9975fc.mp4?1745270231 controls loop></video> <br></br><video src=https://attachments.are.na/36148763/c731f84a1efa1506f3b5f5b4fc2dcf4c.mp4?1745270264 controls loop></video>  </p>
+<p> So the first idea I had was, to take sheets and offset them by some amount vertically. This is the finaly booklet that I submitted for my ISP and its interface counterpart. </p>
+<p> <video src=https://attachments.are.na/38994296/b6c0b19cd430a43794280870f8db99ca.mp4?1756038199 controls loop></video> <br></br><video src=https://attachments.are.na/36378554/a912c5b082eff44930692d0c64173bfc.mp4?1746080098 controls loop></video>  </p>
+<h3> Horizontal Offsets </h3>
+<p> Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). </p>
+<p> The horizontal offsets were a little harder to implement. Because offsetting a sheet will change the dimensions of the spreads it is a part of. So managing that was a hassle. But eventually I was able to figure it out <a href="#footnote-anchor-0"  id="footnote-ref-0"> [geometry] </a>. </p>
+<p> <video src=https://attachments.are.na/40566557/7b31b1807a182d5b41f6229e2d5aeea1.mp4?1761321390 controls loop></video>  </p>
+<p> Overall I also didn't have as much trouble as I thought with sizing and printing upscaled raster type. And somehow everything worked out pretty well. </p>
+<p> The production was much more intensive though. Since unlike trimming regular publications -- where you can trim all the pages together after theyre bound -- with this menu I had to trim them all before binding and correctly bind them together with the offsets.<br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzY1ODg5OS9vcmlnaW5hbF8wMmE3MmQzYmJmOTM0YTE1MTcwMWZiYjg3Yzk0NDY0Mi5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><video src=https://attachments.are.na/43658913/6b54481996bf541d09c18d1557e95a3d.mp4?1771269994 controls loop></video>  </p>
+<!-- caption: My brother took this video -->
+
+<p> This is how the final thing came out to be: </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxMi9vcmlnaW5hbF80NzE2NGI1ZmNjNGM4Nzg4ZTNjYTYwNzViN2VkZDFkZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxMS9vcmlnaW5hbF82MDdhYjFkMmU2YTg2ZTM2MjY0MDk0YTk0Y2FkM2ZhMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxNC9vcmlnaW5hbF81NDJkYTZjNjI0YTI2NjU4M2QwMGEyYWJkMjQ1NGY4My5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<h3> Technical Detour </h3>
+<blockquote> <p> If you're not interested in this feel free to skip to <a href = "#interface"> The Next Section </a> </p> </blockquote>
+<p> Up until this point, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript file. </p>
+<h3> <span id="interface">Interface</span> </h3>
+<p> Even though the grid positioning was helpful, I still needed some form of a graphical interface, not only because it would be more intuitive, but that gives me more opportunities to think about interface in interesting ways <a href="#footnote-anchor-1"  id="footnote-ref-1"> [2] </a>. </p>
+<div class='footnote'> <p>[0]</p> <p> I was having fun doing all this math cause it was just geometry which I think just works very well with Graphic Design. And also some basic arithmetics and algebra.<a id="footnote-anchor-0" href="#footnote-ref-0"> back </a> </p> </div><div class='footnote'> <p>[1]</p> <p> Interface has been a tangential exploration and a project in itself. However I'm not sure if I would or should present it alongside this project as another part of it, or just have it as something else entirely.<a id="footnote-anchor-1" href="#footnote-ref-1"> back </a> </p> </div>
 </body>
 <script type='module' src='/script.js'></script>

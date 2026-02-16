@@ -78,7 +78,14 @@ async function eat(tree) {
 					}
 				}
 
-				if (!done) ret.push(`&lt;${item.tag}${at_string ? " " + at_string : ''}> ${children} &lt;/${item.tag}>`);
+				if (!done) {
+					if (item.tag != '') ret.push(`&lt;${item.tag}${at_string ? " " + at_string : ''}> ${children} &lt;/${item.tag}>`);
+					else {
+						if (item.type == 'footnote_open')
+							ret.push(`&lt;div class='footnote'> &lt;p>[${item.meta.id}]&lt;/p> ${children} &lt;/div>`)
+						else ret.push(children)
+					}
+				}
 			}
 		}
 
