@@ -42,6 +42,12 @@
 
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 :root {
 	--color: white;
 	/* --color: #111; */
@@ -140,18 +146,32 @@ a:hover {
 xmp,
 pre,
 textarea {
-	background: var(--background);
+	tab-size: 2em;
+	font-size: .85em;
+	background: #00000052;
 	color: var(--color);
 	padding: 1em;
-	border-radius: 8px;
 	overflow-x: auto;
 	font-size: 0.95em;
 	line-height: 1.5;
+
 }
 
 .two-col {
 	display: grid;
 	grid-template-columns: 50% 50%;
+	grid-gap: 1em;
+}
+
+.scrollable {
+	width: 90vw;
+	overflow-x: scroll;
+	display: flex;
+}
+
+.scrollable>* {
+	min-width: 500px;
+	margin-right: 1em;
 }
 
 /* Lists & quotes */
