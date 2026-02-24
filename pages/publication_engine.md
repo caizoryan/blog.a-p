@@ -2,11 +2,12 @@
 
 > I literally cannot think of a good name.
 
-Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication through writing programs.
+Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication by writing programs.
 
 This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length.
 
 [IMAGE](https://www.are.na/block/40525391)
+[IMAGE](https://www.are.na/block/40525392)
 
 caption: Words weight depending on their word length 
 
@@ -27,7 +28,7 @@ Eventually I also added hyphenation (can see below marked by red text), a simple
 
 [IMAGE](https://www.are.na/block/35931770)
 
-At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk aboutlater.
+At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk about later.
 
 [VIDEO](https://www.are.na/block/35931897)
 
@@ -35,36 +36,60 @@ Another thing that isn't visible in the screen grabs is the management of DPI an
 
 Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one.
 
+summary: I implemented basic text formatting and layout. The added a grid system to locate and position the items onto a page. Created a data structure/interface to save data and express these elements and finally a Scale that manages sizing for different DPIs. I was almost done. The only thing left to figure out was imposition.
+ 
+
 ### Imposition
 
-Once I had basic text formatting and layout down + a grid system to locate and position the items onto a page, a data structure/interface to save data and easily express these elements and a Scale that manages sizing for different DPIs I was almost done. The only thing left to figure out was imposition.
 
 How do I turn 2D surfaces ~> Spreads into printable sheets that can be bound as a booklet.
 
 [IMAGE](https://www.are.na/block/43641321)
 
-This took some time to figure out.
 
-[VIDEO](https://www.are.na/block/43641418)
+<div class="two-col">
+
+This took some time to figure out. [VIDEO](https://www.are.na/block/43641418)
+
+<div>
 
 I had to simulate this process by moving pieces of paper around or drawing and making arrows to slowly understand what the pattern was. Once I did that a few times I was able to write some helper functions that given an array of page numbers: 
 
 ```js
-let pages = [[0,1], [2, 3], [4, 5], [6, 7], [8, 9], [10,11], [12, 0]]
+let pages = [
+    [0, 1],
+    [2, 3],
+    [4, 5],
+    [6, 7],
+    [8, 9],
+    [10,11],
+    [12, 0]
+]
 ```
 
 Would return imposed pages like this
 
 ```js
 let imposed = imposePages(pages)
-// imposed = [[12, 1], [2, 11], [4, 9], [6, 7], [8,5],  [10, 3]]
+/* imposed = [
+    [12, 1],
+    [2, 11],
+    [4,  9],
+    [6,  7],
+    [8,  5],
+    [10, 3]]
+*/
 ```
+
+</div>
+
+</div>
 
 I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And just how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun!
 
 [IMAGE](https://www.are.na/block/43641318)
 
-### Vertical Offsets
+#### Vertical Offsets
 
 With imposition figured out, I had all the first principles that are (probably) necessary for a publication software down. 
 
@@ -72,15 +97,26 @@ It was time to intervene!
 
 Naturally, since I had just spend so much time trying to figure out imposition, that's where I ended up intervening. 
 
-[VIDEO](https://www.are.na/block/36148752)
-[VIDEO](https://www.are.na/block/36148763)
+
+<div class="two-col">
+
+ [VIDEO](https://www.are.na/block/36148752)
+
+ [VIDEO](https://www.are.na/block/36148763)
+
+</div>
 
 So the first idea I had was, to take sheets and offset them by some amount vertically. This is the finaly booklet that I submitted for my ISP and its interface counterpart.
 
-[VIDEO](https://www.are.na/block/38994296)
-[VIDEO](https://www.are.na/block/36378554)
+<div class="two-col">
 
-### Horizontal Offsets
+ [VIDEO](https://www.are.na/block/38994296)
+
+ [VIDEO](https://www.are.na/block/36378554)
+
+</div>
+
+#### Horizontal Offsets
 
 Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). 
 
@@ -105,7 +141,7 @@ This is how the final thing came out to be:
 [IMAGE](https://www.are.na/block/40957414)
 
 
-### Rotating the spine
+### Rotating the spine (Fold)
 
 I offsetted the spine vertically and then horizontally, so at this point it felt the logical next thing would be to rotate the spine.
 
@@ -154,14 +190,43 @@ I find this video the coolest.
 
 "Although its funny cause when I print it out and fabricate it... it just feels like... oh cool you printed on a long piece of paper and folded it up :) I shall figure out some use case for this now that I've implemented it :P " ~ December 2025
 
-Eventually after I let this project marinate in my head for a while... I thought about how folds are more intuitive to do physically -- but by that logic I would have done this for nothing. But then I thought about it more, and came to the conclusion --
+Eventually after I let this project marinate in my head for a while... I thought about how folds are more intuitive to do physically -- but by that logic I would have done this for nothing. But then I thought about it more, and came to the conclusion -- folds are more intuitive to do physically (yes) and also interesting to iterate computationally (oh). So I can think of the folding paper as an Interface [^interface]. 
+
+[^interface]: I've been really obsessed with ideas of interface through this study. I think its the idea that data can be given an representation, and that representation can be meaningful. And also the fact that I'm a graphic designer and visuals form and structure is fun to me.
+
+[IMAGE](https://www.are.na/block/43886164)
+
+caption: Strips of paper marked with units. 
+
+[IMAGE](https://www.are.na/block/43885970)
+
+caption: Folded into a letter form
+
+<div class="two-col">
+
+ [IMAGE](https://www.are.na/block/43885971)
+
+ [IMAGE](https://www.are.na/block/43885967)
+
+</div>
+
+caption: Sheet unfolded to read the data and then entered into a program.
+
+Once the points are entered into the program, it can generate the letterform.
+
+[IMAGE](https://www.are.na/block/43885966)
+
+And from here, this form can be iterated on by changing the parameters. For instance if we change the width of the sheet in the program while keeping the points the same, because with sheet is thinner, the angles of the foldlines change, causing the form to deviate. 
+
+[IMAGE](https://www.are.na/block/43886001)
+
+
 
 ### Interface Detour
 
-> If you're not interested in this feel free to skip to [The Next Section](#fold)
+While investigating the typographical stack, I was simultaneously also having a tangential explortation -- interface. 
 
-
-Up until this point, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript file. Here are some excerpts from how the code is structured. This is how the programatic interface looked like.
+For the most part of the project, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript files. Here are some excerpts from how the code is structured underneath, or this is how the programatic interface looked like.
 
 To create the scale, we initalize the class with a DPI
 
@@ -290,6 +355,8 @@ And then I iterated on this a bunch. At this point I wanted this to be a [scratc
 
 Initially I was trying to restrict myself from involving the mouse in these interfaces and was wondering if I could find interesting patterns of working with form if I stuck to keyboard only editing. Although I came to the conclusion that this was a foolish idea [^4].
 
+[^4]: why was it a foolish idea?
+
 However I still wanted to keep the constraint of not having elements draggable on the canvas itself. I wanted to maintain the dataness of the elements on the screen. What I mean to say is, _I want the elements to be a result of data_ rather than the elements being able to control the data (moving them mutates their x and y positions).
 
 [IMAGE](https://www.are.na/block/42926965)
@@ -310,10 +377,22 @@ caption: Initial sketch
 
 [VIDEO](https://www.are.na/block/42924978)
 
-caption: First Draft
+caption: First Draft of the UI
 
+This is how it looks currently.
+Functions work now! This was a funky exercise to figure out how to make work. But they work now!
 
+#### Positioning Stuff
 
+[VIDEO](https://www.are.na/block/43857838)
 
+#### Updating text
 
-[^4]: why was it a foolish idea?
+[VIDEO](https://www.are.na/block/43857835)
+
+Text updates when you change it :)
+
+As it may or may not be evident from the videos, data flows from one node to another, which takes the data it recieves and transforms it in its programmed way and sends it forward. Most imporantly, __It can have any UI to reflect and edit its state.__ This is the primary  PRO of this approach [^pure-functions]. 
+
+[^pure-functions]: I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.
+

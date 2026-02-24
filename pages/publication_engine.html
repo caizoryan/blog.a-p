@@ -10,11 +10,11 @@
 <body>
 	<h1> Publication Engine </h1>
 <blockquote> <p> I literally cannot think of a good name. </p> </blockquote>
-<p> Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication through writing programs. </p>
+<p> Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication by writing programs. </p>
 <p> This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length. </p>
-<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5MS9vcmlnaW5hbF9jOTAwNDE3YjA2YjA0NTQ0NDBjOTYyZGEwZTlkNDI5Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5MS9vcmlnaW5hbF9jOTAwNDE3YjA2YjA0NTQ0NDBjOTYyZGEwZTlkNDI5Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5Mi9vcmlnaW5hbF9jZjc5YTc5MTZiNzc1NzdhODYyNGVlYWQ3ZmIzNDc2NC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
 <p class='caption'> Words weight depending on their word length </p>
-<h3> Getting things off the ground </h3>
+<h3 id='Getting-things-off-the-ground'> Getting things off the ground </h3>
 <p> Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways. </p>
 <p> <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
 <p> Plus(+) also linked text boxes so words that overflow from one can go into the next. </p>
@@ -22,33 +22,65 @@
 <p class='caption'> First implementation of linked text boxes. </p>
 <p> Eventually I also added hyphenation (can see below marked by red text), a simple column based grid and the ability to collect spreads together into a 'Book'. </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNTkzMTc3MC9vcmlnaW5hbF83Yzc2OTY5MGU4MjdiYTA1ZTkwMzYxZWFlMWRiOGJhNS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
-<p> At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk aboutlater. </p>
+<p> At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk about later. </p>
 <p> <video src=https://attachments.are.na/35931897/076ef52490459f8e6edd87be3d06828e.mp4?1744428133 controls loop></video>  </p>
 <p> Another thing that isn't visible in the screen grabs is the management of DPI and Units. Essentially, I wanted to use typographic units, such as ems, picas, points and inches. And these units also need to correspond to the paper sizing. Plus, I was doing all of this in p5, which meant everything was raster, so it didn't print great unless you upscaled it to have about 300DPI which wouldn't fit on the screen and be really expensive and slow to draw. </p>
 <p> Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one. </p>
-<h3> Imposition </h3>
-<p> Once I had basic text formatting and layout down + a grid system to locate and position the items onto a page, a data structure/interface to save data and easily express these elements and a Scale that manages sizing for different DPIs I was almost done. The only thing left to figure out was imposition. </p>
+<p class='summary'> I implemented basic text formatting and layout. The added a grid system to locate and position the items onto a page. Created a data structure/interface to save data and express these elements and finally a Scale that manages sizing for different DPIs. I was almost done. The only thing left to figure out was imposition. </p>
+<h3 id='Imposition'> Imposition </h3>
 <p> How do I turn 2D surfaces ~> Spreads into printable sheets that can be bound as a booklet. </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzY0MTMyMS9vcmlnaW5hbF9hYjhiZDIxMmM1MGQ4NzI2MjFlY2JkODgzMzBjMzkyZC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
-<p> This took some time to figure out. </p>
-<p> <video src=https://attachments.are.na/43641418/b95b290090840203dc8402808f6d0bcc.mp4?1771217450 controls loop></video>  </p>
+<div class="two-col">
+
+<p> This took some time to figure out. <video src=https://attachments.are.na/43641418/b95b290090840203dc8402808f6d0bcc.mp4?1771217450 controls loop></video>  </p>
+<div>
+
 <p> I had to simulate this process by moving pieces of paper around or drawing and making arrows to slowly understand what the pattern was. Once I did that a few times I was able to write some helper functions that given an array of page numbers: </p>
-<pre>let pages = [[0,1], [2, 3], [4, 5], [6, 7], [8, 9], [10,11], [12, 0]]
+<pre>let pages = [
+    [0, 1],
+    [2, 3],
+    [4, 5],
+    [6, 7],
+    [8, 9],
+    [10,11],
+    [12, 0]
+]
 </pre>
 <p> Would return imposed pages like this </p>
 <pre>let imposed = imposePages(pages)
-// imposed = [[12, 1], [2, 11], [4, 9], [6, 7], [8,5],  [10, 3]]
+/* imposed = [
+    [12, 1],
+    [2, 11],
+    [4,  9],
+    [6,  7],
+    [8,  5],
+    [10, 3]]
+*/
 </pre>
+</div>
+
+</div>
+
 <p> I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And just how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun! </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzY0MTMxOC9vcmlnaW5hbF9iNmJkYjBiMjE5MzQ2NDM3ODcwN2E4OGU0MWRjY2E5MS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
-<h3> Vertical Offsets </h3>
+<h4> Vertical Offsets </h4>
 <p> With imposition figured out, I had all the first principles that are (probably) necessary for a publication software down. </p>
 <p> It was time to intervene! </p>
 <p> Naturally, since I had just spend so much time trying to figure out imposition, that's where I ended up intervening. </p>
-<p> <video src=https://attachments.are.na/36148752/d92c25feeff8694a642becc15f9975fc.mp4?1745270231 controls loop></video> <br></br><video src=https://attachments.are.na/36148763/c731f84a1efa1506f3b5f5b4fc2dcf4c.mp4?1745270264 controls loop></video>  </p>
+<div class="two-col">
+
+<p> <video src=https://attachments.are.na/36148752/d92c25feeff8694a642becc15f9975fc.mp4?1745270231 controls loop></video>  </p>
+<p> <video src=https://attachments.are.na/36148763/c731f84a1efa1506f3b5f5b4fc2dcf4c.mp4?1745270264 controls loop></video>  </p>
+</div>
+
 <p> So the first idea I had was, to take sheets and offset them by some amount vertically. This is the finaly booklet that I submitted for my ISP and its interface counterpart. </p>
-<p> <video src=https://attachments.are.na/38994296/b6c0b19cd430a43794280870f8db99ca.mp4?1756038199 controls loop></video> <br></br><video src=https://attachments.are.na/36378554/a912c5b082eff44930692d0c64173bfc.mp4?1746080098 controls loop></video>  </p>
-<h3> Horizontal Offsets </h3>
+<div class="two-col">
+
+<p> <video src=https://attachments.are.na/38994296/b6c0b19cd430a43794280870f8db99ca.mp4?1756038199 controls loop></video>  </p>
+<p> <video src=https://attachments.are.na/36378554/a912c5b082eff44930692d0c64173bfc.mp4?1746080098 controls loop></video>  </p>
+</div>
+
+<h4> Horizontal Offsets </h4>
 <p> Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). </p>
 <p> The horizontal offsets were a little harder to implement. Because offsetting a sheet will change the dimensions of the spreads it is a part of. So managing that was a hassle. But eventually I was able to figure it out <a href="#footnote-anchor-0"  id="footnote-ref-0"> [geometry] </a>. </p>
 <p> <video src=https://attachments.are.na/40566557/7b31b1807a182d5b41f6229e2d5aeea1.mp4?1761321390 controls loop></video>  </p>
@@ -57,7 +89,7 @@
 <p class='caption'> [ 📹 ] My younger brother took this video. dumb shit. </p>
 <p> This is how the final thing came out to be: </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxMi9vcmlnaW5hbF80NzE2NGI1ZmNjNGM4Nzg4ZTNjYTYwNzViN2VkZDFkZS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxMS9vcmlnaW5hbF82MDdhYjFkMmU2YTg2ZTM2MjY0MDk0YTk0Y2FkM2ZhMS5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDk1NzQxNC9vcmlnaW5hbF81NDJkYTZjNjI0YTI2NjU4M2QwMGEyYWJkMjQ1NGY4My5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
-<h3> Rotating the spine </h3>
+<h3 id='Rotating-the-spine-(Fold)'> Rotating the spine (Fold) </h3>
 <p> I offsetted the spine vertically and then horizontally, so at this point it felt the logical next thing would be to rotate the spine. </p>
 <p> Surprisingly, around the same time, Alexandra from my thesis cohort had found her self experimenting with the same gesture in her own workshop experiments. </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MzcyNjI5My9vcmlnaW5hbF9jYzgxZDU4YWE2ZDljMTQ0Y2RkZGIyZWEzZDQ1OTk5Ny5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
@@ -81,10 +113,25 @@
 <p> <video src=https://attachments.are.na/41831815/f8f00108882556941c14588d533c5aed.mp4?1765866911 controls loop></video>  </p>
 <p> I find this video the coolest.<br></br><video src=https://attachments.are.na/41831851/c5ef23de7b62dc6e53c18781496bd5e5.mp4?1765867140 controls loop></video> <br></br><video src=https://attachments.are.na/41831852/9b8de84601354badc73144a57ef9ed2d.mp4?1765867145 controls loop></video>  </p>
 <p> "Although its funny cause when I print it out and fabricate it... it just feels like... oh cool you printed on a long piece of paper and folded it up :) I shall figure out some use case for this now that I've implemented it :P " ~ December 2025 </p>
-<p> Eventually after I let this project marinate in my head for a while... I thought about how folds are more intuitive to do physically -- but by that logic I would have done this for nothing. But then I thought about it more, and came to the conclusion -- </p>
-<h3> Interface Detour </h3>
-<blockquote> <p> If you're not interested in this feel free to skip to <a href = "#fold"> The Next Section </a> </p> </blockquote>
-<p> Up until this point, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript file. Here are some excerpts from how the code is structured. This is how the programatic interface looked like. </p>
+<p> Eventually after I let this project marinate in my head for a while... I thought about how folds are more intuitive to do physically -- but by that logic I would have done this for nothing. But then I thought about it more, and came to the conclusion -- folds are more intuitive to do physically (yes) and also interesting to iterate computationally (oh). So I can think of the folding paper as an Interface <a href="#footnote-anchor-2"  id="footnote-ref-2"> [interface] </a>. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NjE2NC9vcmlnaW5hbF81MDdmZjM1MjMzNTk0YTk4MjBhMmI3MjNkZDMwNmQxYy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p class='caption'> Strips of paper marked with units. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk3MC9vcmlnaW5hbF85ZGNhOWYzN2QwOGIwOWJjMDdhY2NmNzI1N2RkNDc1ZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p class='caption'> Folded into a letter form </p>
+<div class="two-col">
+
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk3MS9vcmlnaW5hbF84ZjZlM2JiNGY3Y2EyNDc3N2UyOWU5ZjZhNjNmMTVkMS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk2Ny9vcmlnaW5hbF83MTNhZWIyZDg5MzZlZTk5MWNmNWZlOGExMmYzODhhNC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+</div>
+
+<p class='caption'> Sheet unfolded to read the data and then entered into a program. </p>
+<p> Once the points are entered into the program, it can generate the letterform. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk2Ni9vcmlnaW5hbF9jMzUwYWQ5ZTQ0YjZmMDQwYjI2MWFhYTY5NDY1NzcxOC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> And from here, this form can be iterated on by changing the parameters. For instance if we change the width of the sheet in the program while keeping the points the same, because with sheet is thinner, the angles of the foldlines change, causing the form to deviate. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NjAwMS9vcmlnaW5hbF80ODJlNWUxNzAxMTNkZTZiYjU4ZWMwOTY4MDE3OGQ2MS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<h3 id='Interface-Detour'> Interface Detour </h3>
+<p> While investigating the typographical stack, I was simultaneously also having a tangential explortation -- interface. </p>
+<p> For the most part of the project, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript files. Here are some excerpts from how the code is structured underneath, or this is how the programatic interface looked like. </p>
 <p> To create the scale, we initalize the class with a DPI </p>
 <pre>let s = new Scale(150)
 
@@ -146,8 +193,8 @@ let fourInches = s.inch(4) // 4*150 = 600px
     ["x", ["verso",  2]],
 ]
 </pre>
-<h3> Graphical Interface </h3>
-<p> Even though the grid positioning makes it much easier to put things on a page, I still needed some form of a graphical interface, not only because it would be more intuitive, but that it also gives me more opportunities to utilise interfaces in interesting ways <a href="#footnote-anchor-2"  id="footnote-ref-2"> [2] </a>. </p>
+<h3 id='Graphical-Interface'> Graphical Interface </h3>
+<p> Even though the grid positioning makes it much easier to put things on a page, I still needed some form of a graphical interface, not only because it would be more intuitive, but that it also gives me more opportunities to utilise interfaces in interesting ways <a href="#footnote-anchor-3"  id="footnote-ref-3"> [2] </a>. </p>
 <p> My first attempt at an interface for this tool was for a virtual book that I made. This was my Workshop Proposal for our <a href = "./antithesis_cohort.html"> Anti-thesis cohort </a>. </p>
 <p> <video src=https://attachments.are.na/43667811/3bee77836d560aaaddaa58e6286e7022.mp4?1771287661 controls loop></video>  </p>
 <p> As it is evident, all the interface does is makes the nested Array structure into an html interface. So it doesn't add much other than a shorter feedback loop for positioning items and such. Rather it is a downgrade because now I'm unable to use the affordances I have from programming with this (such as for loops, using variables, etc). </p>
@@ -172,7 +219,7 @@ let fourInches = s.inch(4) // 4*150 = 600px
 <p> <video src=https://attachments.are.na/41015241/9727d5d85f392a11fca1f6600619d150.mp4?1762836975 controls loop></video> <br></br><video src=https://attachments.are.na/41014081/5b16e9b64337a77f5f4365ad86d81453.mp4?1762833876 controls loop></video>  </p>
 <h4> Loops </h4>
 <p> <video src=https://attachments.are.na/41101627/6969f5186ea322ee864c3724a348f529.mp4?1763094983 controls loop></video>  </p>
-<p> Initially I was trying to restrict myself from involving the mouse in these interfaces and was wondering if I could find interesting patterns of working with form if I stuck to keyboard only editing. Although I came to the conclusion that this was a foolish idea <a href="#footnote-anchor-3"  id="footnote-ref-3"> [4] </a>. </p>
+<p> Initially I was trying to restrict myself from involving the mouse in these interfaces and was wondering if I could find interesting patterns of working with form if I stuck to keyboard only editing. Although I came to the conclusion that this was a foolish idea <a href="#footnote-anchor-4"  id="footnote-ref-4"> [4] </a>. </p>
 <p> However I still wanted to keep the constraint of not having elements draggable on the canvas itself. I wanted to maintain the dataness of the elements on the screen. What I mean to say is, <em> I want the elements to be a result of data </em> rather than the elements being able to control the data (moving them mutates their x and y positions). </p>
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MjkyNjk2NS9vcmlnaW5hbF8zZmZhY2U3MjU0ZDJlYmZlYjc5OWMxNGFhMDU3Y2FlOC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
 <p class='caption'> Initial sketch for how I could incorporate mouse controlled elements to this existing UI. </p>
@@ -183,7 +230,14 @@ let fourInches = s.inch(4) // 4*150 = 600px
 <p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MjkyNjk2NC9vcmlnaW5hbF82M2I5MWFhYWM4NmVhZTIwOGY0ZDk0ZjRjYmQwMjI4Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
 <p class='caption'> Initial sketch </p>
 <p> <video src=https://attachments.are.na/42924978/f8c7ed080f75937f3e5dbd73aeb727db.mp4?1769195654 controls loop></video>  </p>
-<p class='caption'> First Draft </p>
-<div class='footnote'> <p>[0]</p> <p> I was having fun doing all this math cause it was just geometry which I think just works very well with Graphic Design. And also some basic arithmetics and algebra.<a id="footnote-anchor-0" href="#footnote-ref-0"> back </a> </p> </div><div class='footnote'> <p>[1]</p> <p> It also made me realise how much fun it is to learn math through programming. Because it really has a tendency to show that the interesting aspects of math is not the numbers, but relationships between systems and how they influence each other. Dynamic systems, such as programming make it so you can explore these relationships by constructing these mathematical contexts. ITS APPLIED!<a id="footnote-anchor-1" href="#footnote-ref-1"> back </a> </p> </div><div class='footnote'> <p>[2]</p> <p> Interface has been a tangential exploration and a project in itself. However I'm not sure if I would or should present it alongside this project as another part of it, or just have it as something else entirely.<a id="footnote-anchor-2" href="#footnote-ref-2"> back </a> </p> </div><div class='footnote'> <p>[3]</p> <p> why was it a foolish idea?<a id="footnote-anchor-3" href="#footnote-ref-3"> back </a> </p> </div>
+<p class='caption'> First Draft of the UI </p>
+<p> This is how it looks currently.<br></br>Functions work now! This was a funky exercise to figure out how to make work. But they work now! </p>
+<h4> Positioning Stuff </h4>
+<p> <video src=https://attachments.are.na/43857838/123a00bc189702858dd0280b9b8ce007.mp4?1771873490 controls loop></video>  </p>
+<h4> Updating text </h4>
+<p> <video src=https://attachments.are.na/43857835/89477f4faa65a1bb5f00b6bc6193c127.mp4?1771873490 controls loop></video>  </p>
+<p> Text updates when you change it :) </p>
+<p> As it may or may not be evident from the videos, data flows from one node to another, which takes the data it recieves and transforms it in its programmed way and sends it forward. Most imporantly, <strong> It can have any UI to reflect and edit its state. </strong> This is the primary  PRO of this approach <a href="#footnote-anchor-5"  id="footnote-ref-5"> [pure-functions] </a>. </p>
+<div class='footnote'> <p>[0]</p> <p> I was having fun doing all this math cause it was just geometry which I think just works very well with Graphic Design. And also some basic arithmetics and algebra.<a id="footnote-anchor-0" href="#footnote-ref-0"> back </a> </p> </div><div class='footnote'> <p>[1]</p> <p> It also made me realise how much fun it is to learn math through programming. Because it really has a tendency to show that the interesting aspects of math is not the numbers, but relationships between systems and how they influence each other. Dynamic systems, such as programming make it so you can explore these relationships by constructing these mathematical contexts. ITS APPLIED!<a id="footnote-anchor-1" href="#footnote-ref-1"> back </a> </p> </div><div class='footnote'> <p>[2]</p> <p> I've been really obsessed with ideas of interface through this study. I think its the idea that data can be given an representation, and that representation can be meaningful. And also the fact that I'm a graphic designer and visuals form and structure is fun to me.<a id="footnote-anchor-2" href="#footnote-ref-2"> back </a> </p> </div><div class='footnote'> <p>[3]</p> <p> Interface has been a tangential exploration and a project in itself. However I'm not sure if I would or should present it alongside this project as another part of it, or just have it as something else entirely.<a id="footnote-anchor-3" href="#footnote-ref-3"> back </a> </p> </div><div class='footnote'> <p>[4]</p> <p> why was it a foolish idea?<a id="footnote-anchor-4" href="#footnote-ref-4"> back </a> </p> </div><div class='footnote'> <p>[5]</p> <p> I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.<a id="footnote-anchor-5" href="#footnote-ref-5"> back </a> </p> </div>
 </body>
 <script type='module' src='/script.js'></script>

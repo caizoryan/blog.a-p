@@ -136,16 +136,26 @@ setHookFor("**/*.md", {
 	}
 })
 
+setHookFor("**/*.md", {
+	condition: (item, child) => {
+		return item.tag == 'p' && child.split(" ")[0] == 'summary:'
+	},
+	element: (item, child) => {
+		let removed = child.replace("summary: ", "")
+		return `&lt;${item.tag} class='summary'> ${removed} &lt;/${item.tag}>`
+	}
+})
+
 setHookFor("pages/publication_engine.md", {
 	condition: (item, child) => {
-		if (item.tag == 'a') {
-			return false
+		if (item.tag == 'h3') {
+			console.log('h3!!!', child)
+			return true
 		}
 		else false
 	},
 	element: (item, child) => {
-		let removed = child.replace("date: ", "")
-		return `&lt;${item.tag} class='date'> ${removed} &lt;/${item.tag}>`
+		return `&lt;${item.tag} id='${child.split(" ").join('-')}'> ${child} &lt;/${item.tag}>`
 	}
 })
 
