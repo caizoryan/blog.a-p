@@ -165,8 +165,8 @@ textarea {
 
 .two-col {
 	display: grid;
-	grid-template-columns: 50% 50%;
-	grid-gap: 1em;
+	grid-template-columns: calc(50% - .25em) calc(50% - .25em);
+	grid-gap: .5em;
 }
 
 .scrollable {

@@ -1,6 +1,9 @@
 # Publication Engine
 
-> I literally cannot think of a good name.
+> Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
+
+_~~ I literally cannot think of a good name._
+
 
 Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication by writing programs.
 
@@ -140,6 +143,55 @@ This is how the final thing came out to be:
 [IMAGE](https://www.are.na/block/40957411)
 [IMAGE](https://www.are.na/block/40957414)
 
+### Raster Limitations (switch to PDF)
+
+I worked on a booklet project with Craig towards the end of the fall semester.
+
+[VIDEO](https://www.are.na/block/43922342)
+
+The project was generally really simple, but it put my publication stack to the test. How well could it handle typesetting about 8000 words. Turns out the finer details weren't great and the rags were all over the place, but other than that it was a pretty good outcome considering it was designed and fabricated in 4 days.
+
+[IMAGE](https://www.are.na/block/43922598)
+
+<div class="two-col">
+
+ [IMAGE](https://www.are.na/block/43898372)
+
+ [IMAGE](https://www.are.na/block/43898373)
+
+</div> 
+
+Played around with baseline shifts and conditional styling (see below).
+
+[IMAGE](https://www.are.na/block/43922874)
+
+caption: Craig's annotational feedback. Since the tool didn't support PDF exports yet, "PDF" was sent as an mp4
+
+For this project I also implemented a 2-up imposition [^2-UP-Imposition] export. 
+
+[^2-UP-Imposition]: What is 2-up printing you ask? [see](https://www.colorvisionprinting.com/blog/what-is-2-up-printing-4-up-printing-n-up-printing-etc)
+
+
+<div class="two-col">
+
+ [IMAGE](https://www.are.na/block/43898394)
+
+ [IMAGE](https://www.are.na/block/43898393)
+
+</div> 
+
+Here is where the issues with raster exports began. Up until now I wasn't really paying attention how accurate the size would be when it was printed. I assumed as long as the ratios are correct, I could just print JPEG files and just fit them to the paper. For the most part this method worked, till it came the time to print this specific project. Because the spreads were imposed on the 11x17 with two spreads on each side -- to minimize the amount of cuts that are needed, the spreads had to be be correctly positioned when printed -- which they were not, off by about 1/2 an inch at its worst and about 1/16th of an inch at best.
+
+This experience sort of made me look into PDF exports. Which turned out to be easier than I thought. Instead of using p5.js, I could switch it out for [pdfkit](https://pdfkit.org/). I wrote a compatibility layer so it could be rendered on HTML canvas through p5.js but can be saved as a PDF. 
+
+With PDF also came some nice affordances, like being able to use spot color!
+
+[IMAGE](https://www.are.na/block/43898506)
+
+I think the outcome is not that great looking, but it technically worked and I was able to specify spot colors and the printshop was able to print it. 
+
+
+
 
 ### Rotating the spine (Fold)
 
@@ -221,8 +273,9 @@ And from here, this form can be iterated on by changing the parameters. For inst
 [IMAGE](https://www.are.na/block/43886001)
 
 
+### Interface & Techical Detour
 
-### Interface Detour
+> If you aren't interested in the programmatic aspects, feel free to skip to the [Graphical Interface](#graphical-interface) part
 
 While investigating the typographical stack, I was simultaneously also having a tangential explortation -- interface. 
 
@@ -235,7 +288,6 @@ let s = new Scale(150)
 
 // and then use it to get px values
 let fourInches = s.inch(4) // 4*150 = 600px
-
 ```
 
 This is how the grid structure is defined:
@@ -264,7 +316,6 @@ export let grid = new Grid({
 ```
 
 And then we can use the grid structure to position a text frame on a page, you could write it as a nested array:
-
 
 ```js
 let frame = ["TextFrame",
@@ -313,7 +364,7 @@ Even though the grid positioning makes it much easier to put things on a page, I
 
 [^2]: Interface has been a tangential exploration and a project in itself. However I'm not sure if I would or should present it alongside this project as another part of it, or just have it as something else entirely.
 
-My first attempt at an interface for this tool was for a virtual book that I made. This was my Workshop Proposal for our [Anti-thesis cohort](./antithesis_cohort.md).
+My first attempt at an interface for this tool was for a virtual book that I made. This was my Workshop Proposal for our [Anti-thesis cohort](../antithesis_cohort.md).
 
 [VIDEO](https://www.are.na/block/43667811)
 
@@ -393,6 +444,7 @@ Functions work now! This was a funky exercise to figure out how to make work. Bu
 Text updates when you change it :)
 
 As it may or may not be evident from the videos, data flows from one node to another, which takes the data it recieves and transforms it in its programmed way and sends it forward. Most imporantly, __It can have any UI to reflect and edit its state.__ This is the primary  PRO of this approach [^pure-functions]. 
+
 
 [^pure-functions]: I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.
 

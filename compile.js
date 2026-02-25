@@ -106,6 +106,7 @@ async function eat(tree) {
 }
 
 setHookFor(["*", "*/*"], arena)
+setHookFor(['**/*.md'], arena)
 setHookFor("**/*.md", {
 	condition: (item, child) => {
 		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
@@ -138,14 +139,19 @@ setHookFor("**/*.md", {
 
 setHookFor("pages/publication_engine.md", {
 	condition: (item, child) => {
-		if (item.tag == 'h3') {
-			console.log('h3!!!', child)
+		if (
+			item.tag == 'h1' ||
+			item.tag == 'h2' ||
+			item.tag == 'h3' ||
+			item.tag == 'h4' ||
+			item.tag == 'h5'
+		) {
 			return true
 		}
 		else false
 	},
 	element: (item, child) => {
-		return `<${item.tag} id='${child.split(" ").join('-')}'> ${child} </${item.tag}>`
+		return `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
 	}
 })
 

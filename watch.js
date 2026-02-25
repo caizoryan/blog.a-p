@@ -1,7 +1,7 @@
 import fs from "fs"
 import cp from "child_process"
 
-let watching = './pages/publication_engine.md'
+let watching = './pages/publication_tools/chronological.md'
 
 let run = () => {
 	console.log("File changed, running ./compile.js")
