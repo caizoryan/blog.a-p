@@ -495,7 +495,9 @@ summary: Did some basic interfaces and slowly progressed to a node based interfa
 
 ### Going Forward
 
-So what I need to work on now is presentation. How can I communicate to someone who has never seen this project what this project is (?)
+The most common critique I've gotten in the last few weeks is that "Everything looks interesting (breadth) but nothing looks explored (depth)". Which points me to making more outcomes. I think I've been too caught up with the development part, and I would leave things behind the second they started working, as if to say "problem solved". I need to go back and tie up all these knots by utilising the systems that I have devised to make some cool stuff!
+
+Also what I need to work on is the presentation. How can I communicate to someone who has never seen this project what this project is (?)
 
 It seemed like I needed some anchors. What is this project about? It's an exploration of the typographical stack... What is the typographical stack?
 
@@ -509,6 +511,6 @@ I kind of also think I have work that is made possible due to these categories, 
 
 ... is a good example for the imposition category and explains what the domain of imposition is, but also is enabled by paragraph and structure but doesn't explain them. So I think I need to find a mediation, or a way to put these projects into their boxes... or maybe I need to distinguish work that is just work in itself and work that explains the larger project.
 
-summary: Going forward I need to make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time.
+summary: Going forward I need to utilise these systems to show what kinds of form they are capable of making as well as make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time.
 
 
