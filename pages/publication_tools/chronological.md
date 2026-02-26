@@ -44,7 +44,7 @@ Another thing that isn't visible in the screen grabs is the management of DPI an
 
 Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one.
 
-summary: I implemented basic text formatting and layout. The added a grid system to locate and position the items onto a page. Created a data structure/interface to save data and express these elements and finally a Scale that manages sizing for different DPIs. I was almost done. The only thing left to figure out was imposition.
+summary: Implemented basic text formatting and layout. Then added a grid system to locate and position the items onto a page. Created a data structure/interface to save data and express these elements and finally a Scale that manages sizing for different DPIs. I was almost done. The only thing left to figure out was imposition.
  
 
 ### Imposition
@@ -124,6 +124,7 @@ So the first idea I had was, to take sheets and offset them by some amount verti
 
 </div>
 
+
 #### Horizontal Offsets
 
 Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). 
@@ -147,6 +148,23 @@ This is how the final thing came out to be:
 [IMAGE](https://www.are.na/block/40957412)
 [IMAGE](https://www.are.na/block/40957411)
 [IMAGE](https://www.are.na/block/40957414)
+
+summary: Explored what can be done with imposition, implemented vertical and horizontal offsets as interventions. Used the tool for an actual commercial project and delivered well produced menus!
+
+### Off-track "Book" structural studies
+
+This guy: 
+
+[VIDEO](https://www.are.na/block/40570288)
+
+and:
+
+[IMAGE](https://www.are.na/block/43937725)
+
+[IMAGE](https://www.are.na/block/43937724)
+
+[IMAGE](https://www.are.na/block/43937723)
+
 
 ### Raster Limitations (switch to PDF)
 
@@ -195,7 +213,7 @@ With PDF also came some nice affordances, like being able to use spot color!
 
 I think the outcome is not that great looking, but it technically worked and I was able to specify spot colors and the printshop was able to print it. 
 
-
+summary: Tried some conditional typesetting, finer details like baseline shifts, indents and character styles. Implemented 2-UP imposition which exposed limitations of printing JPEGS, eventually made the move to working with PDFs
 
 
 ### Rotating the spine (Fold)
@@ -282,6 +300,8 @@ And from here, this form can be iterated on by changing the parameters. For inst
 
 caption: incomplete specimen for the fold typeface.
 
+summary: Explored and implemented folding paper algorithms. Found that the better use case for the folding program was to take folds from physical form into a digital form for further parametric exploration rather than developing digitally and executing physically.
+
 ### Simple Paragraph Typesetting book
 
 As an explanatory exercise of the process behind setting a paragraph I made a book that shows the process underneath (for a left-aligned paragraph).
@@ -289,6 +309,8 @@ As an explanatory exercise of the process behind setting a paragraph I made a bo
 [VIDEO](https://www.are.na/block/43923888)
 
 This got compiled, imposed into signatures and printed and bound into a book. Going forward I think this is an an interesting presentation for step-wise program execution. I can see conditional typesetting logic being expressed aptly here.
+
+summary: Did a project that explicitly explains step-wise execution of typesetting program.
 
 
 ### Interface & Techical Detour
@@ -448,8 +470,7 @@ caption: Initial sketch
 
 caption: First Draft of the UI
 
-This is how it looks currently.
-Functions work now! This was a funky exercise to figure out how to make work. But they work now!
+This is how it looks currently...
 
 #### Positioning Stuff
 
@@ -466,6 +487,8 @@ As it may or may not be evident from the videos, data flows from one node to ano
 
 [^pure-functions]: I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.
 
+summary: Did some basic interfaces and slowly progressed to a node based interface. Currently struggling with making the node based interface intuitive and easy to navigate around.
+
 ### Going Forward
 
 So what I need to work on now is presentation. How can I communicate to someone who has never seen this project what this project is (?)
@@ -478,8 +501,10 @@ I'm thinking of fitting the work I have done into these four categories. And mor
 
 I kind of also think I have work that is made possible due to these categories, and there is work that evidently explains these categories. For instance, I think this menu project...
 
-[IMAGE](https://www.are.na/block/43658899)
+[IMAGE](https://www.are.na/block/40957412)
 
 ... is a good example for the imposition category and explains what the domain of imposition is, but also is enabled by paragraph and structure but doesn't explain them. So I think I need to find a mediation, or a way to put these projects into their boxes... or maybe I need to distinguish work that is just work in itself and work that explains the larger project.
+
+summary: Going forward I need to make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time.
 
 

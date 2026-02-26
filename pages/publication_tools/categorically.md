@@ -1,5 +1,6 @@
 # Publication Engine (process)
 
+> SORRY THIS IS WORK IN PROGRESS!
 
 ## Letter (but also words)
 
@@ -76,11 +77,89 @@ As an explanatory exercise of the process behind setting a paragraph I made a bo
 
 This got compiled, imposed into signatures and printed and bound into a book. Going forward I think this is an an interesting presentation for step-wise program execution. I can see conditional typesetting logic being expressed aptly here.
 
+[IMAGE](https://www.are.na/block/43922598)
+
+<div class="two-col">
+
+ [IMAGE](https://www.are.na/block/43898372)
+
+ [IMAGE](https://www.are.na/block/43898373)
+
+</div> 
+
+Played around with baseline shifts and conditional styling (see below).
+
+[IMAGE](https://www.are.na/block/43922874)
+
+caption: Craig's annotational feedback. Since the tool didn't support PDF exports yet, "PDF" was sent as an mp4
+
+
 ## Structure
 
 This section is sort of murky cuz all work would fall into here, but none of the work really explains this.
 
+[IMAGE](https://www.are.na/block/43937649)
+
+## Impostion
+
+This guy: 
+
+[VIDEO](https://www.are.na/block/40570288)
+
+and:
+
+[IMAGE](https://www.are.na/block/43937725)
+
+[IMAGE](https://www.are.na/block/43937724)
+
+[IMAGE](https://www.are.na/block/43937723)
+
+[IMAGE](https://www.are.na/block/40957412)
+
+[IMAGE](https://www.are.na/block/40957411)
+
+<div class="two-col">
+
+ [VIDEO](https://www.are.na/block/38994296)
+
+ [VIDEO](https://www.are.na/block/36378554)
+
+</div>
+
+<div class="two-col">
+
+ [IMAGE](https://www.are.na/block/43898394)
+
+ [IMAGE](https://www.are.na/block/43898393)
+
+</div> 
+
+
 ## Interface
 
+[VIDEO](https://www.are.na/block/41015241)
 
+#### Loops
+[VIDEO](https://www.are.na/block/41101627)
+
+
+However I still wanted to keep the constraint of not having elements draggable on the canvas itself. I wanted to maintain the dataness of the elements on the screen. What I mean to say is, _I want the elements to be a result of data_ rather than the elements being able to control the data (moving them mutates their x and y positions).
+
+[IMAGE](https://www.are.na/block/42926965)
+
+caption: Initial sketch for how I could incorporate mouse controlled elements to this existing UI.
+
+[VIDEO](https://www.are.na/block/43668419)
+
+caption: First implementation for this.
+
+I kept going back to the UI's of Max MSP, Pure Data, Grasshoper or even Touch Designer. Eventually I decided to turn the whole structure into a node based canvas UI.
+
+[IMAGE](https://www.are.na/block/42926964)
+
+caption: Initial sketch
+
+[VIDEO](https://www.are.na/block/42924978)
+
+[VIDEO](https://www.are.na/block/43857838)
 
