@@ -93,7 +93,6 @@ Played around with baseline shifts and conditional styling (see below).
 
 caption: Craig's annotational feedback. Since the tool didn't support PDF exports yet, "PDF" was sent as an mp4
 
-
 ## Structure
 
 This section is sort of murky cuz all work would fall into here, but none of the work really explains this.
@@ -102,11 +101,11 @@ This section is sort of murky cuz all work would fall into here, but none of the
 
 ## Impostion
 
-This guy: 
+In the early days was trying to play around with creating alternative book structures that would alter the content and produce alternate ways of navigating the content and have space for interactions between pages.
 
 [VIDEO](https://www.are.na/block/40570288)
 
-and:
+and: this other idea where spreads would be formed at page intersections (so only when pages from the two different booklets correctly aligned)
 
 [IMAGE](https://www.are.na/block/43937725)
 

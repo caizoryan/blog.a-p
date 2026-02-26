@@ -12,6 +12,8 @@ Here is an outline of my ongoing thesis project where I've been exploring the te
 
 caption: Typographical Stack
 
+> Software for printed artifacts. Rebuilding the production of books from first principles. Your project lives right at the intersection of procedure and tactility. When people ask you why, you don’t need to answer them. But if you must, your answer is dead on: that with a new tool comes new affordances which in turn creates new forms. ~Ali
+
 This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length.
 
 [IMAGE](https://www.are.na/block/40525391)
@@ -153,17 +155,19 @@ summary: Explored what can be done with imposition, implemented vertical and hor
 
 ### Off-track "Book" structural studies
 
-This guy: 
+In the early days was trying to play around with creating alternative book structures that would alter the content and produce alternate ways of navigating the content and have space for interactions between pages.
 
 [VIDEO](https://www.are.na/block/40570288)
 
-and:
+and: this other idea where spreads would be formed at page intersections (so only when pages from the two different booklets correctly aligned)
 
 [IMAGE](https://www.are.na/block/43937725)
 
 [IMAGE](https://www.are.na/block/43937724)
 
 [IMAGE](https://www.are.na/block/43937723)
+
+summary: No summary, just a note to come back to this and make something nicer. I think the concepts are interesting, just have to craft these better.
 
 
 ### Raster Limitations (switch to PDF)

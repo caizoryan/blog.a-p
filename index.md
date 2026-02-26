@@ -7,6 +7,9 @@ Welcome to my blog. I don't have a lot of stuff here yet, rather there's just on
 insert: Here's my first blog post!
 [Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
 
+insert: This is one of my long running projects... wrote about it a little bit... (WIP)
+[Publication tools](./pages/publication_tools/chronological.md)
+
 [caizoryan/editor JavaScript ](https://github.com/caizoryan/editor) Began this year with starting the [editor-editor](https://feed.a-p.space/feed-editor-editor) project. This was the prelimnary repo. Later renamed it to editor-editor
 
 [IMAGE](https://www.are.na/block/42108619)
