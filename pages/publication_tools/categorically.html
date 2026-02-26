@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/style.css">
+	<link rel='stylesheet' href='/styles/repo.css'>
+</head> 
+<body>
+	<h1> Publication Engine (process) </h1>
+<h2> Letter (but also words) </h2>
+<h3> Folded letters </h3>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk3MC9vcmlnaW5hbF85ZGNhOWYzN2QwOGIwOWJjMDdhY2NmNzI1N2RkNDc1ZS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p class='caption'> Folded into a letter form </p>
+<p> Once the points are entered into the program, it can generate the letterform. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NTk2Ni9vcmlnaW5hbF9jMzUwYWQ5ZTQ0YjZmMDQwYjI2MWFhYTY5NDY1NzcxOC5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> And from here, this form can be iterated on by changing the parameters. For instance if we change the width of the sheet in the program while keeping the points the same, because with sheet is thinner, the angles of the foldlines change, causing the form to deviate. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0Mzg4NjAwMS9vcmlnaW5hbF80ODJlNWUxNzAxMTNkZTZiYjU4ZWMwOTY4MDE3OGQ2MS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> <video src=https://attachments.are.na/43923862/9218d83facc14db4c31a228c925dd20e.mp4?1772045961 controls loop></video>  </p>
+<h3> Physarium based lettering </h3>
+<p> I wanted to play around with this stuff: </p>
+<p>  </p>
+<p> So I implemented a basic low res version for it </p>
+<p> <video src=https://attachments.are.na/43733431/452794625add68c790e1dbcae15412df.mp4?1771480608 controls loop></video>  </p>
+<p> Made it so it renders ascii chars instead of circles </p>
+<p> <video src=https://attachments.are.na/43733433/8efbeb3ae0c532e888d3c0475a4c3cc2.mp4?1771480608 controls loop></video>  </p>
+<p> Then constrained it into the walls of a letterform. The sad part now is that the organic forms that the physarium produces is completely hidden now since it doesn't have the room to move... </p>
+<p> But the motion is pretty interesting and organic. </p>
+<p> So I just iterated a bunch on this </p>
+<p> <video src=https://attachments.are.na/43733430/abe1bc8dd8ad70188c138e9411585737.mp4?1771480608 controls loop></video>  </p>
+<p> <video src=https://attachments.are.na/43733432/6e363d205be37cce7d7488c2af565c8f.mp4?1771480608 controls loop></video>  </p>
+<p> And I think this form looks awesome! </p>
+<p> Going to turn this into a screen print :) </p>
+<h2> Paragraph </h2>
+<p> Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways. </p>
+<p> <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
+<p> Plus(+) also linked text boxes so words that overflow from one can go into the next. </p>
+<p> <video src=https://attachments.are.na/35462595/4cda268f3e505774242f8cbb2edea6f5.mp4?1742781867 controls loop></video>  </p>
+<p class='caption'> First implementation of linked text boxes. </p>
+<p> Eventually I also added hyphenation (can see below marked by red text), a simple column based grid and the ability to collect spreads together into a 'Book'. </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiIzNTkzMTc3MC9vcmlnaW5hbF83Yzc2OTY5MGU4MjdiYTA1ZTkwMzYxZWFlMWRiOGJhNS5wbmciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p> <img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5MS9vcmlnaW5hbF9jOTAwNDE3YjA2YjA0NTQ0NDBjOTYyZGEwZTlkNDI5Yy5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /><br></br><img src="https://images.are.na/eyJidWNrZXQiOiJhcmVuYV9pbWFnZXMiLCJrZXkiOiI0MDUyNTM5Mi9vcmlnaW5hbF9jZjc5YTc5MTZiNzc1NzdhODYyNGVlYWQ3ZmIzNDc2NC5qcGciLCJlZGl0cyI6eyJyZXNpemUiOnsid2lkdGgiOjEyMDAsImhlaWdodCI6MTIwMCwiZml0IjoiaW5zaWRlIiwid2l0aG91dEVubGFyZ2VtZW50Ijp0cnVlfSwid2VicCI6eyJxdWFsaXR5Ijo3NX0sImpwZWciOnsicXVhbGl0eSI6NzV9LCJyb3RhdGUiOm51bGx9fQ==?bc=0" /> </p>
+<p class='caption'> Words weight depending on their word length </p>
+<p> As an explanatory exercise of the process behind setting a paragraph I made a book that shows the process underneath (for a left-aligned paragraph). </p>
+<p> <video src=https://attachments.are.na/43923888/97a6fcf829ebcfc544979f366813487d.mp4?1772046058 controls loop></video>  </p>
+<p> This got compiled, imposed into signatures and printed and bound into a book. Going forward I think this is an an interesting presentation for step-wise program execution. I can see conditional typesetting logic being expressed aptly here. </p>
+<h2> Structure </h2>
+<p> This section is sort of murky cuz all work would fall into here, but none of the work really explains this. </p>
+<h2> Interface </h2>
+</body>
+<script type='module' src='/script.js'></script>

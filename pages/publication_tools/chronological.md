@@ -1,11 +1,16 @@
-# Publication Engine
-
-> Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
+# Publication Engine (process)
 
 _~~ I literally cannot think of a good name._
 
+> Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
+
+
 
 Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication by writing programs.
+
+[IMAGE](https://www.are.na/block/43924008)
+
+caption: Typographical Stack
 
 This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length.
 
@@ -264,6 +269,7 @@ caption: Folded into a letter form
 
 caption: Sheet unfolded to read the data and then entered into a program.
 
+
 Once the points are entered into the program, it can generate the letterform.
 
 [IMAGE](https://www.are.na/block/43885966)
@@ -271,6 +277,18 @@ Once the points are entered into the program, it can generate the letterform.
 And from here, this form can be iterated on by changing the parameters. For instance if we change the width of the sheet in the program while keeping the points the same, because with sheet is thinner, the angles of the foldlines change, causing the form to deviate. 
 
 [IMAGE](https://www.are.na/block/43886001)
+
+[VIDEO](https://www.are.na/block/43923862)
+
+caption: incomplete specimen for the fold typeface.
+
+### Simple Paragraph Typesetting book
+
+As an explanatory exercise of the process behind setting a paragraph I made a book that shows the process underneath (for a left-aligned paragraph).
+
+[VIDEO](https://www.are.na/block/43923888)
+
+This got compiled, imposed into signatures and printed and bound into a book. Going forward I think this is an an interesting presentation for step-wise program execution. I can see conditional typesetting logic being expressed aptly here.
 
 
 ### Interface & Techical Detour
@@ -447,4 +465,21 @@ As it may or may not be evident from the videos, data flows from one node to ano
 
 
 [^pure-functions]: I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.
+
+### Going Forward
+
+So what I need to work on now is presentation. How can I communicate to someone who has never seen this project what this project is (?)
+
+It seemed like I needed some anchors. What is this project about? It's an exploration of the typographical stack... What is the typographical stack?
+
+[IMAGE](https://www.are.na/block/43924008)
+
+I'm thinking of fitting the work I have done into these four categories. And more importantly making more work (more books, posters, videos, websites and such) that explain all of this stuff.
+
+I kind of also think I have work that is made possible due to these categories, and there is work that evidently explains these categories. For instance, I think this menu project...
+
+[IMAGE](https://www.are.na/block/43658899)
+
+... is a good example for the imposition category and explains what the domain of imposition is, but also is enabled by paragraph and structure but doesn't explain them. So I think I need to find a mediation, or a way to put these projects into their boxes... or maybe I need to distinguish work that is just work in itself and work that explains the larger project.
+
 
