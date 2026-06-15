@@ -5,8 +5,7 @@ _~~ I literally cannot think of a good name._
 > Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
 
 
-
-Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publication by writing programs.
+Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publications by writing programs.
 
 [IMAGE](https://www.are.na/block/43924008)
 
@@ -14,7 +13,7 @@ caption: Typographical Stack
 
 > Software for printed artifacts. Rebuilding the production of books from first principles. Your project lives right at the intersection of procedure and tactility. When people ask you why, you don’t need to answer them. But if you must, your answer is dead on: that with a new tool comes new affordances which in turn creates new forms. ~Ali
 
-This project started in about March of 2025. Although I would say I'd been experimenting with some of these concepts since my second year at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length.
+This project started around March of 2025. Although I would say I'd been experimenting with some of these concepts since the winter of 2023 at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length.
 
 [IMAGE](https://www.are.na/block/40525391)
 [IMAGE](https://www.are.na/block/40525392)
@@ -24,11 +23,11 @@ caption: Words weight depending on their word length
 
 ### Getting things off the ground
 
-Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways.
+Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways (akin to the example above).
 
 [IMAGE](https://www.are.na/block/35440196)
 
-Plus(+) also linked text boxes so words that overflow from one can go into the next.
+(+) linked text boxes so words that overflow from one can go into the next.
 
 [IMAGE](https://www.are.na/block/35462595)
 
@@ -38,11 +37,11 @@ Eventually I also added hyphenation (can see below marked by red text), a simple
 
 [IMAGE](https://www.are.na/block/35931770)
 
-At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be functions, which I will talk about later.
+At this point I was also heavily using Javascript classes to model all of this elements. I later revised them to be pure functions, which I will talk about later.
 
 [VIDEO](https://www.are.na/block/35931897)
 
-Another thing that isn't visible in the screen grabs is the management of DPI and Units. Essentially, I wanted to use typographic units, such as ems, picas, points and inches. And these units also need to correspond to the paper sizing. Plus, I was doing all of this in p5, which meant everything was raster, so it didn't print great unless you upscaled it to have about 300DPI which wouldn't fit on the screen and be really expensive and slow to draw. 
+Another thing that isn't visible in the screen grabs is the management of DPI and Units. Essentially, to make publications you want to use typographic units, such as ems, picas, points and inches. And these units also need to correspond to the paper sizing. However, I was doing all of this in p5, which meant everything was raster an specified in pixels, and it didn't print great unless you upscaled it to about 300DPI which wouldn't fit on the screen and be really expensive and slow to draw. 
 
 Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one.
 
@@ -50,7 +49,6 @@ summary: Implemented basic text formatting and layout. Then added a grid system 
  
 
 ### Imposition
-
 
 How do I turn 2D surfaces ~> Spreads into printable sheets that can be bound as a booklet.
 
@@ -95,7 +93,7 @@ let imposed = imposePages(pages)
 
 </div>
 
-I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And just how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun!
+I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun!
 
 [IMAGE](https://www.are.na/block/43641318)
 
@@ -105,7 +103,7 @@ With imposition figured out, I had all the first principles that are (probably) 
 
 It was time to intervene!
 
-Naturally, since I had just spend so much time trying to figure out imposition, that's where I ended up intervening. 
+Naturally, since I had just spent so much time trying to figure out imposition, that's where I ended up intervening. So the first idea I had was, to take sheets and offset them by some amount vertically. 
 
 
 <div class="two-col">
@@ -116,7 +114,8 @@ Naturally, since I had just spend so much time trying to figure out imposition, 
 
 </div>
 
-So the first idea I had was, to take sheets and offset them by some amount vertically. This is the finaly booklet that I submitted for my ISP and its interface counterpart.
+
+This is the finaly booklet that I submitted for my ISP and its interface counterpart.
 
 <div class="two-col">
 
@@ -131,7 +130,7 @@ So the first idea I had was, to take sheets and offset them by some amount verti
 
 Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). 
 
-The horizontal offsets were a little harder to implement. Because offsetting a sheet will change the dimensions of the spreads it is a part of. So managing that was a hassle. But eventually I was able to figure it out [^geometry].
+The horizontal offsets were a little harder to implement. Because offsetting a sheet will change the dimensions of the spreads that fall on the sheets. So managing that was a hassle. But eventually I was able to figure it out [^geometry].
 
 [^geometry]: I was having fun doing all this math cause it was just geometry which I think just works very well with Graphic Design. And also some basic arithmetics and algebra.
 
@@ -207,9 +206,9 @@ For this project I also implemented a 2-up imposition [^2-UP-Imposition] export.
 
 </div> 
 
-Here is where the issues with raster exports began. Up until now I wasn't really paying attention how accurate the size would be when it was printed. I assumed as long as the ratios are correct, I could just print JPEG files and just fit them to the paper. For the most part this method worked, till it came the time to print this specific project. Because the spreads were imposed on the 11x17 with two spreads on each side -- to minimize the amount of cuts that are needed, the spreads had to be be correctly positioned when printed -- which they were not, off by about 1/2 an inch at its worst and about 1/16th of an inch at best.
+Here is where the issues with raster exports began. Up until now I wasn't really paying attention how accurate the size would be when it was printed. I assumed as long as the ratios are correct, I could just print JPEG files and just fit them to the paper. For the most part this method worked, till it came the time to print this specific project. Because the spreads were imposed on the 11x17 with two spreads on each side -- to minimize the amount of cuts that are needed, the spreads had to be be correctly positioned when printed -- which they were not. They were off by about 1/2 an inch at its worst and about 1/16th of an inch at best.
 
-This experience sort of made me look into PDF exports. Which turned out to be easier than I thought. Instead of using p5.js, I could switch it out for [pdfkit](https://pdfkit.org/). I wrote a compatibility layer so it could be rendered on HTML canvas through p5.js but can be saved as a PDF. 
+This experience made me look into PDF exports. Which turned out to be easier than I thought. Instead of using p5.js, I could switch it out for [pdfkit](https://pdfkit.org/). I wrote a compatibility layer so it could be rendered on HTML canvas through p5.js but can be saved as a PDF. 
 
 With PDF also came some nice affordances, like being able to use spot color!
 
@@ -259,7 +258,7 @@ And that worked by just incrementally reflecting all the points past a fold and 
 
 [VIDEO](https://www.are.na/block/41831814)
 
-And then finally, given a printed surface with say some image or graphic on it, how would the graphic look folded up given the fold lines. This one was more tough than I thought and it still break sometimes if the angle of rotation is more than 180 degrees, which I need to figure out how to fix. But still it looks so awesome and feels gratifying! 
+And then finally, given a printed surface with say some image or graphic on it, how would the graphic look folded up given the fold lines. This one was more tough than I thought and it still breaks sometimes when the angle of rotation is more than 180 degrees, which I need to figure out how to fix. But still it looks so awesome and feels gratifying! 
 
 [VIDEO](https://www.are.na/block/41831815)
 
@@ -400,7 +399,7 @@ let frame = ["TextFrame",
 ]
 ```
 
-
+[IMAGE](https://www.are.na/block/43937649)
 
 ### Graphical Interface
 
@@ -511,6 +510,9 @@ I kind of also think I have work that is made possible due to these categories, 
 
 ... is a good example for the imposition category and explains what the domain of imposition is, but also is enabled by paragraph and structure but doesn't explain them. So I think I need to find a mediation, or a way to put these projects into their boxes... or maybe I need to distinguish work that is just work in itself and work that explains the larger project.
 
-summary: Going forward I need to utilise these systems to show what kinds of form they are capable of making as well as make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time.
+summary: Going forward I need to utilise these systems to show what kinds of forms they are capable of making as well as make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time.
 
 
+[IMAGE](https://www.are.na/block/43953178)
+
+~~ where i started

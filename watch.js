@@ -2,8 +2,7 @@ import fs from "fs"
 import cp from "child_process"
 
 let files = [
-	'./pages/publication_tools/chronological.md',
-	'./pages/publication_tools/categorically.md'
+	'./pages/programming_interfaces.md',
 ]
 
 let run = () => {

@@ -19,23 +19,6 @@ let attrsToString = at =>
 		.map(([key, value]) => `${key} = "${value}"`)
 		.join(" ");
 
-let beforeElementHooks = []
-let styles = []
-let hookMap = {}
-let styleMap = {
-	"pages/wrapping_2025.md": ['repo.css']
-}
-
-let setHookFor = (path, hook) => {
-	if (!Array.isArray(path)) path = [path]
-
-	path.forEach(path => {
-		hookMap[path]
-			? hookMap[path].push(hook)
-			: hookMap[path] = [hook]
-	})
-}
-
 async function eat(tree) {
 	let ret = [];
 	if (!tree) return "";
@@ -88,7 +71,7 @@ async function eat(tree) {
 				else if (item.type == 'footnote_anchor')
 					p = `<a id="footnote-anchor-${item.meta.id}" href="#footnote-ref-${item.meta.id}"> back </a>`
 				else if (item.type == 'footnote_ref')
-					p = `<a href="#footnote-anchor-${item.meta.id}"  id="footnote-ref-${item.meta.id}"> [${item.meta.label}] </a>`
+					p = `<a href="#footnote-anchor-${item.meta.id}"  id="footnote-ref-${item.meta.id}"> [${item.meta.id}] </a>`
 				else if (item.type == 'fence') p = codeblock(item)
 				else p = item.content;
 
@@ -105,76 +88,55 @@ async function eat(tree) {
 	return ret;
 }
 
+let beforeElementHooks = []
+let styles = []
+let hookMap = {}
+let styleMap = {
+	"pages/wrapping_2025.md": ['repo.css']
+}
+
+let setHookFor = (path, hook) => {
+	if (!Array.isArray(path)) path = [path]
+
+	path.forEach(path => {
+		hookMap[path]
+			? hookMap[path].push(hook)
+			: hookMap[path] = [hook]
+	})
+}
+
+
 setHookFor(["*", "*/*"], arena)
 setHookFor(['**/*.md'], arena)
 setHookFor("**/*.md", {
-	condition: (item, child) => {
-		return item.tag == 'p' && child.split(" ")[0] == 'insert:'
-	},
-	element: (item, child) => {
-		let removed = child.replace("insert: ", "")
-		return `<${item.tag} class='insert'> ${removed} </${item.tag}>`
-	}
-})
-
-setHookFor("**/*.md", {
-	condition: (item, child) => {
-		return item.tag == 'p' && child.split(" ")[0] == 'caption:'
-	},
-	element: (item, child) => {
-		let removed = child.replace("caption: ", "")
-		return `<${item.tag} class='caption'> ${removed} </${item.tag}>`
-	}
-})
-
-setHookFor("**/*.md", {
-	condition: (item, child) => {
-		return item.tag == 'p' && child.split(" ")[0] == 'summary:'
-	},
-	element: (item, child) => {
-		let removed = child.replace("summary: ", "")
-		return `<${item.tag} class='summary'> ${removed} </${item.tag}>`
-	}
-})
+    condition: (item, child) => {
+        const prefix = child.split(" ")[0];
+        return item.tag === 'p' && ['insert:', 'caption:', 'summary:'].includes(prefix);
+    },
+    element: (item, child) => {
+        const removed = child.replace(/^(insert|caption|summary): /, '');
+        return `<${item.tag} class='${removed.split(" ")[0]}'> ${removed} </${item.tag}>`;
+    }
+});
 
 setHookFor("pages/publication_engine.md", {
-	condition: (item, child) => {
-		if (
-			item.tag == 'h1' ||
-			item.tag == 'h2' ||
-			item.tag == 'h3' ||
-			item.tag == 'h4' ||
-			item.tag == 'h5'
-		) {
-			return true
-		}
-		else false
-	},
-	element: (item, child) => {
-		return `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
-	}
-})
+    condition: (item) => ['h1', 'h2', 'h3', 'h4', 'h5'].includes(item.tag),
+    element: (item, child) => `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
+});
 
+// Date hook
 setHookFor("pages/wrapping_2025.md", {
-	condition: (item, child) => {
-		return item.tag == 'p' && child.split(" ")[0] == 'date:'
-	},
-	element: (item, child) => {
-		let removed = child.replace("date: ", "")
-		return `<${item.tag} class='date'> ${removed} </${item.tag}>`
-	}
-})
+    condition: (item, child) => item.tag === 'p' && child.startsWith('date: '),
+    element: (item, child) => `<${item.tag} class='date'> ${child.replace('date: ', '')} </${item.tag}>`
+});
 
 setHookFor("**/*.md", {
-	condition: (item, child) => {
-		if (item.tag == 'a' && attrs(item).href?.includes('feed.a-p.space')) return true
-		else false
-	},
-	element: (item, child) => `
-<${item.tag} class='feed-link' ${attrsToString(attrs(item))}>
-<span>(FEED)</span>&nbsp;${child}
-</${item.tag}>`
-})
+    condition: (item) => item.tag === 'a' && attrs(item).href?.includes('feed.a-p.space'),
+    element: (item, child) => `
+        <${item.tag} class='feed-link' ${attrsToString(attrs(item))}>
+        <span>(FEED)</span>&nbsp;${child}
+        </${item.tag}>`
+});
 
 
 let codeblock = (item) => {

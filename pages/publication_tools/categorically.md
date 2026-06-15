@@ -1,6 +1,6 @@
 # Publication Engine (process)
 
-> SORRY THIS IS WORK IN PROGRESS!
+> SORRY THIS IS WORK IN PROGRESS! [PLEASE SEE THIS INSTEAD](./chronological.md)
 
 ## Letter (but also words)
 
