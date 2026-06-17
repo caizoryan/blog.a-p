@@ -56,7 +56,7 @@
 	--background: #d1d1d1;
 	/* --background: #eee; */
 	--highlight: var(--background);
-	--alt-highlight: #ff8300;
+	--alt-highlight: #010101cc;
 	--links: var(--alt-highlight);
 	--light-background: #79b698;
 }

@@ -105,6 +105,25 @@ let setHookFor = (path, hook) => {
 	})
 }
 
+function processString(str) {
+    const regex = /^(insert|caption|summary): /;
+    const match = str.match(regex);
+    
+    if (match) {
+        const matchedValue = match[1];
+        const modifiedString = str.replace(regex, '');
+        return {
+            matchedValue: matchedValue,
+            modifiedString: modifiedString
+        };
+    } else {
+        return {
+            matchedValue: null,
+            modifiedString: str
+        };
+    }
+}
+
 
 setHookFor(["*", "*/*"], arena)
 setHookFor(['**/*.md'], arena)
@@ -114,8 +133,11 @@ setHookFor("**/*.md", {
         return item.tag === 'p' && ['insert:', 'caption:', 'summary:'].includes(prefix);
     },
     element: (item, child) => {
-        const removed = child.replace(/^(insert|caption|summary): /, '');
-        return `<${item.tag} class='${removed.split(" ")[0]}'> ${removed} </${item.tag}>`;
+			const regex = /^(insert|caption|summary): /;
+			const match = child.match(regex);
+			const matchedValue = match[1];
+			const modifiedString = child.replace(regex, '');
+			return `<${item.tag} class='${matchedValue}'> ${modifiedString} </${item.tag}>`;
     }
 });
 

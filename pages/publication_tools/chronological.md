@@ -1,6 +1,4 @@
-# Publication Engine 
-
-_~~ I literally cannot think of a good name._
+# Publication Tools 
 
 > Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
 
@@ -9,7 +7,7 @@ Here is an outline of my now concluded thesis project where I've been exploring 
 <div class='spacer'></div>
 
 
-### The Typographical Stack 
+### The Typographical Stack / Vocabulary
 
 Or rather the vocabulary that gets implemented when developing publication design tools.
 
@@ -519,4 +517,4 @@ summary: Going forward I need to utilise these systems to show what kinds of for
 
 [IMAGE](https://www.are.na/block/43953178)
 
-~~ where i started
+caption: where i started

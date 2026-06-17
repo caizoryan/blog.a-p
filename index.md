@@ -4,13 +4,13 @@ Hey there person! I hope you're doing well :)
 
 Welcome to my blog. I don't have a lot of stuff here yet, rather there's just one post. This blog runs on the same engine that powers [research.if-m](https://research.if-m.works). 
 
-insert: Here's my first blog post!
-[Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
 
-insert: This is one of my long running projects... wrote about it a little bit... (WIP)
-[Publication tools](./pages/publication_tools/chronological.md)
+insert: [Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
+Here's my first blog post!
 
-[IMAGE](https://www.are.na/block/42108619)
+insert: [Publication tools](./pages/publication_tools/chronological.md)
+This is one of my long running projects... wrote about it a little bit... (WIP)
+
 
 ### Here is a codeblock
 Codeblocks are runnable :) play around!
