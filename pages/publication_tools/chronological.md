@@ -1,15 +1,19 @@
-# Publication Engine (process)
+# Publication Engine 
 
 _~~ I literally cannot think of a good name._
 
 > Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
 
+Here is an outline of my now concluded thesis project where I've been exploring the technical aspects of the typographical stack for publication design. + Investigating different ways of producing publications by writing programs.
 
-Here is an outline of my ongoing thesis project where I've been exploring the technical aspects of the typographical stack. + Investigating different ways of producing publications by writing programs.
+<div class='spacer'></div>
 
-[IMAGE](https://www.are.na/block/43924008)
 
-caption: Typographical Stack
+### The Typographical Stack 
+
+Or rather the vocabulary that gets implemented when developing publication design tools.
+
+[IMAGE](https://www.are.na/block/47056146)
 
 > Software for printed artifacts. Rebuilding the production of books from first principles. Your project lives right at the intersection of procedure and tactility. When people ask you why, you don’t need to answer them. But if you must, your answer is dead on: that with a new tool comes new affordances which in turn creates new forms. ~Ali
 

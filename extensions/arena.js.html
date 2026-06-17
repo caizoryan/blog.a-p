@@ -20,7 +20,7 @@ let options = {
 		referrerPolicy: "no-referrer",
 	},
 };
-const image = (block) => `&lt;img src="${block.image.display.url}" />`;
+const image = (block) => `&lt;img src="${block.image.original.url}" />`;
 const media_embed = (block) =>
 	`&lt;span class="media">${block.embed?.html}&lt;/span>`;
 

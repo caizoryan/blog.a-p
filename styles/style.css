@@ -49,32 +49,28 @@
 }
 
 :root {
-	--color: white;
+	--color: #0e0e0e;;
 	/* --color: #111; */
 	--page-margin: 80px;
-	--muted: #e8eede;
-	--background: #20411d;
+	--muted: #505050;
+	--background: #d1d1d1;
 	/* --background: #eee; */
 	--highlight: var(--background);
-	--alt-highlight: #c8eede;
+	--alt-highlight: #ff8300;
 	--links: var(--alt-highlight);
 	--light-background: #79b698;
 }
 
-@media only screen and (max-width: 850px) {
-	:root {
-		--page-margin: 20px;
-	}
-}
 
 body {
 	font-family: 'ABC Oracle Unlicensed Trial', sans-serif;
 	line-height: 1.6;
 	color: var(--color);
 	background: var(--background);
+	margin: 0 auto;
 	max-width: 62ch;
-	margin: 0 var(--page-margin);
-	font-size: 18.5px;
+  font-size: 16.5px;
+  padding: 1em;
 }
 
 body h1:first-child,
@@ -111,9 +107,10 @@ h6 {
 h1,
 h2,
 h3 {
+	border-top: 1px solid var(--color);
 	line-height: 1.3;
-	margin: 2em 0 -.3em 0em;
-	padding-top: .4em
+  margin: 2.5em 0 0em 0;
+  padding-top: .4em;
 }
 
 h1 {
@@ -141,7 +138,9 @@ p {
 
 a {
 	color: var(--links);
-	text-decoration: none;
+	color: var(--color);
+	font-weight: 600;
+  background: yellow;
 }
 
 a:hover {
@@ -166,7 +165,9 @@ textarea {
 .two-col {
 	display: grid;
 	grid-template-columns: calc(50% - .25em) calc(50% - .25em);
-	grid-gap: .5em;
+	grid-gap: .75em;
+  width: 120%;
+  margin-left: -10%;
 }
 
 .scrollable {
@@ -189,7 +190,7 @@ ol {
 blockquote {
 	border-left: 4px solid var(--muted);
 	padding-left: 1em;
-	color: #d7d7d7;
+	color: var(--muted);
 	margin: 1em 0;
 }
 
@@ -201,14 +202,13 @@ video {
 }
 
 .clip {
-	border: 1px solid var(--light-background);
-	padding: 2em;
-	font-size: .7em;
-	border-radius: 10px;
-	box-shadow: 0 0 15px 5px rgba(0, 0, 0, .1);
-	background: #1d28474d;
-	/* max-width: 45%; */
-	margin-top: 1em;
+	border: 1px solid #727272;
+  padding: 2em;
+  font-size: .7em;
+  border-radius: 10px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, .1);
+  background: #dcdcdc4d;
+  margin-top: 1em;
 }
 
 .clip h1,
@@ -268,7 +268,23 @@ video {
 	color: var(--muted);
 }
 
+.spacer {
+	height: 3em;
+}
+
 br {
 	display: block;
 	margin: 1px 0;
+}
+
+@media only screen and (max-width: 850px) {
+	:root {
+		--page-margin: 20px;
+	}
+
+	.two-col {
+		grid-template-columns: 1fr;
+		width: 100%;
+		margin: 0;
+	}
 }
