@@ -84,7 +84,7 @@ export default {
 		// Text
 		// --------------------------------
 		if (block.class == 'Text') {
-			let transformed = await transform(block.content)
+			let transformed = await transform(block.content, false)
 			if (child.trim().toLowerCase() == 'clip') return `<div class='clip'>
 <a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
 ${transformed.slice(0, 4).join("\n")}

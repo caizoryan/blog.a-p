@@ -1,11 +1,14 @@
 # Publication Tools 
 
+
 > Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
 
 Here is an outline of my now concluded thesis project where I've been exploring the technical aspects of the typographical stack for publication design. + Investigating different ways of producing publications by writing programs.
 
 <div class='spacer'></div>
 
+## Part 1 (process)
+> published February 18th 2026
 
 ### The Typographical Stack / Vocabulary
 
@@ -518,3 +521,6 @@ summary: Going forward I need to utilise these systems to show what kinds of for
 [IMAGE](https://www.are.na/block/43953178)
 
 caption: where i started
+
+## Part 2 (Outcomes)
+> published June 17th 2026

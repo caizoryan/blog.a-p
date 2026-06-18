@@ -8,10 +8,26 @@
 	
 </head> 
 <body>
-	<h1> What is this? </h1>
+	<h1 id='what-is-this?'> What is this? </h1>
+<div class="table-of-contents">
+
+<p>
+	<a style='margin-left:3em;'
+		href='#pages' >
+		Pages
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#ssg-structure' >
+		SSG Structure
+	</a>
+</p>
+</div>
 <p> Blog for A-P. iterating on research.if-m </p>
 <p> ;funky this wont do it </p>
-<h1> Directory structure </h1>
+<h1 id='directory-structure'> Directory structure </h1>
 <pre>compile.js - compiler
 index.md   - main page
 
@@ -58,13 +74,13 @@ console.log("Dawg")
 </code>
 <a href='research.if-m.works'>link</a>
 </pre>
-<h1> Spec for this website </h1>
+<h1 id='spec-for-this-website'> Spec for this website </h1>
 <p> Let's begin with what is required. </p>
-<h3> Pages </h3>
+<h3 id='pages'> Pages </h3>
 <ul> <li> <p> An index page. (with about and all pages listed) </p> </li><li> <p> Pages for categories </p><ul> <li> <p> Technologies: Reactivity, DOM, Lisp, Are.na API, sqlite </p> </li><li> <p> Applications: How technologies are used: [Are.na API + sqlite] = Are.na Offline </p> </li> </ul> </li><li> <p> Playground: Import files from the repository, edit in codemirror and test out in an iframe. </p> </li> </ul>
-<h3> SSG Structure </h3>
+<h3 id='ssg-structure'> SSG Structure </h3>
 <ul> <li> <p> Pages can be written in MD files. </p> </li><li> <p> Assets such as other JS files, CSS, images all can be relative to this MD file. </p> </li><li> <p> Perhaps a Lib folder where all importables can be. </p> </li><li> <p> A site generator script can read all MD files, and transform them to html. </p> </li><li> <p> Code blocks in MD files will be turned into codemirror instances. </p><ul> <li> <p> If the code block has attribute that allows it to be runnable it can be run in an iframe beside the block. Else it's just a codeblock. </p> </li> </ul> </li> </ul>
-<h1> Good References </h1>
+<h1 id='good-references'> Good References </h1>
 <blockquote> <p> Good References of publishing code </p> </blockquote>
 <p> <a href = "https://shaunlebron.github.io/parinfer/"> Parinfer </a> </p>
 <p> The gifs/visualisations are super helpful in order to understand the concepts and stuf. Outline helps with navigation and giving an understanding of where you are in the document. The typing animation is pretty fun too, + its an interactive demo... </p>

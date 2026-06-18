@@ -54,6 +54,7 @@
 	--page-margin: 80px;
 	--muted: #505050;
 	--background: #d1d1d1;
+	--most-muted: #a5a5a5;
 	/* --background: #eee; */
 	--highlight: var(--background);
 	--alt-highlight: #010101cc;
@@ -114,19 +115,19 @@ h3 {
 }
 
 h1 {
-	font-size: 4em;
+	font-size: 3em;
 }
 
 h2 {
-	font-size: 3.6em;
+	font-size: 2.6em;
 }
 
 h3 {
-	font-size: 2.3em;
+	font-size: 1.8em;
 }
 
 h4 {
-	font-size: 2em;
+	font-size: 1.4em;
 	line-height: 1.3;
 	margin: 2em 0 -.8em 0em;
 }
@@ -202,11 +203,11 @@ video {
 }
 
 .clip {
-	border: 1px solid #727272;
-  padding: 2em;
+	border: 1.5px solid #3e3e3e;
+  padding: 2em 3em;
   font-size: .7em;
   border-radius: 10px;
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 15px 5px rgba(138, 138, 138, 0.1);
   background: #dcdcdc4d;
   margin-top: 1em;
 }
@@ -215,6 +216,7 @@ video {
 .clip h2,
 .clip h3 {
 	margin: 0;
+	border-top: none;
 }
 
 .feed-link {
@@ -257,6 +259,39 @@ video {
 	/* text-decoration: underline; */
 }
 
+
+.table-of-contents::before {
+	font-size: 1.2em;
+  content: "TABLE OF CONTENTS";
+  display: block;
+  padding-bottom: 0.6em;
+  color: black;
+}
+
+.table-of-contents a {
+  text-decoration: none;
+	border-left: 1px solid black;
+	background-color: none;
+	background: none;
+  padding-left: 1em;
+	font-family: inherit;
+  font-weight: 300;
+}
+
+.table-of-contents {
+  background-color: var(--most-muted);
+  color: var(--background);
+  padding: 1em;
+	margin-bottom: 4em;
+	padding-bottom: 1.5em;
+	width: max-content;
+
+}
+
+.table-of-contents p {
+	margin: 0;
+}
+
 .caption::before {
 	content: "^";
 }
@@ -287,4 +322,74 @@ br {
 		width: 100%;
 		margin: 0;
 	}
+}
+
+h1 {
+	position: relative;
+}
+h1::before {
+	font-size: .8rem;
+  content: "h1";
+  display: block;
+	position: absolute;
+	font-family: monospace;
+	left: -2em;
+	top: 3em;
+  color: var(--muted);
+}
+
+h2 {
+	position: relative;
+}
+h2::before {
+	font-size: .8rem;
+  content: "h2";
+  display: block;
+	position: absolute;
+	font-family: monospace;
+	left: -2em;
+	top: 3em;
+  color: var(--muted);
+}
+
+h3 {
+	position: relative;
+}
+h3::before {
+	font-size: .8rem;
+  content: "h3";
+  display: block;
+	position: absolute;
+	font-family: monospace;
+	left: -2em;
+	top: 2em;
+  color: var(--muted);
+}
+
+h4 {
+	position: relative;
+}
+h4::before {
+	font-size: .8rem;
+  content: "h4";
+  display: block;
+	position: absolute;
+	font-family: monospace;
+	left: -2em;
+	top: 1em;
+  color: var(--muted);
+}
+
+h5 {
+	position: relative;
+}
+h5::before {
+	font-size: .8rem;
+  content: "h5";
+  display: block;
+	position: absolute;
+	font-family: monospace;
+	left: -2em;
+	top: 1em;
+  color: var(--muted);
 }

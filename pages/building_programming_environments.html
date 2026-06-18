@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/styles/style.css">
+	
+</head> 
+<body>
+	<h1 id='experiences-of-building-programming-environments'> Experiences of Building Programming Environments </h1>
+<div class="table-of-contents">
+
+<p>
+	<a style='margin-left:2em;'
+		href='#intro' >
+		Intro
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:2em;'
+		href='#first-way-around' >
+		First way around
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:2em;'
+		href='#editor-editor:-dogfooding-/-bootstrapping' >
+		Editor Editor: Dogfooding / Bootstrapping
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:2em;'
+		href='#reducing-the-scope' >
+		Reducing the scope
+	</a>
+</p>
+</div>
+<blockquote> <p> Ruminating on experiences I've had building programming environments and quirks of practicing programming as a graphic designer. </p> </blockquote>
+<p> Before I start, to quickly define what I mean when I say programming environment: Any interface that lets a person (user) manipulate and in some cases run programs. Code editors as well as Visual Programming Langauges (Max MSP, VVVV, Pure Data, etc) </p>
+<h2 id='intro'> Intro </h2>
+<p> I started learning programming in 2022, in my first year at OCAD U as a graphic design undergrad. At school, the approach towards learning and teaching design, especially in 1st year is quite recursive. You're learning about how to do design by doing the thing (producing design artifacts) but simultaneously you're also observing yourself → learn about design → through documentation and reflective writing. The thing being designed is a design process rather than the outcomes. Ways of seeing, and thinking through things (Maybe this is what all "good" education seeks to do). </p>
+<p> Practicing programming in an environment such as this naturally made me approach my software practice in a similar way. I often found myself wondering about the way I think, write and make when I sit down to program. </p>
+<p> ++ </p>
+<p> as someone learning about typography, and how </p>
+<ul> <li> <p> the organization of text and how that alters the semantics and </p> </li><li> <p> how the graphical treatment of text and its context helps in the way the text is parsed. </p> </li> </ul>
+<p> made me want to explore the tools I write code with, as graphical instruments. Obviously I make this statement lightly looking back at it after 3 years, but this has been a long process of learning, stumbling, making and producing things. </p>
+<h2 id='first-way-around'> First way around </h2>
+<p> The first experience I had making a rudimentary programming </p>
+<h2 id='editor-editor:-dogfooding-/-bootstrapping'> Editor Editor: Dogfooding / Bootstrapping </h2>
+<p> At some point I had this idea for bootsrapping an editor using iframes. A webpage made with a textbox, a button and an iframe. When you click the button, the content from the textbox becomes the src for the iframe. That's the core logic. I also added codemirror so I could have all the awesomeness of using a code editor and actually use this. </p>
+<p> And the gimmicky thing with this project was that I could use the editor to edit its own self and then run that file to make the next version of itself! </p>
+<p> <div class='clip'>
+<a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
+<h1 id='editing-editor-using-editor'> Editing Editor using Editor </h1>
+<p> <video src=https://attachments.are.na/34402469/c69702490b769454ff5150d3107c6bd4.mp4?1739146366 controls loop></video>  </p>
+<p> I implemented saving and outputing html files and a mechanism to traverse levels. Just have to make it a little smoother to work. Right now its very jaggedy, mostly because I don't know how it should work. </p>
+<p> The current implementation outputs the html file with a SOURCE_PATH variable which can be used to navigate back to the source files. I think this is the way to do it. </p>
+
+<a href='https://feed.a-p.space/blocks/34402531' target="_blank">
+Read More
+</a>
+</div> </p>
+<p> The other big part of this editor was (ui-code) components. A component had a render function and a transformation function that will return the code. The returned code just gets compiled together to form the iframe. This means certain parts of the code can take a shape of ui specific to the shape of the data and state is stored as code. </p>
+<p> Here is an example of a tile editor for exploring <a href = "https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/"> wave function collapse </a>. </p>
+<p> <div class='clip'>
+<a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
+<p> Added edges to the wave function tile component for <a href = ""> buffalo </a> </p>
+<p> <video src=https://attachments.are.na/33857809/f33830525b98cbb414384f9e20f2d4ee.mp4?1737473417 controls loop></video>  </p>
+
+<a href='https://feed.a-p.space/blocks/33857682' target="_blank">
+Read More
+</a>
+</div> </p>
+<p> One of the things I'm really proud of from this project is hooking this whole environment to an LSP! This wasn't easy in itself and the file being split into multiple codemirror instances made it even harder. </p>
+<p> The main function of the editor is to give you components that add up to the file. So a file is split up into smaller self contained chunks. This works all and good till the tsserver returns a {from, to} position for the diagnostics. </p>
+<p> Each codemirror instance can work with from and to position only relative to its own state and has no way of knowing what had come before or after it. The way I fixed it was adding start property in each blocks state which the parent of the block manages. So everytime you save a file it increments and assigns a start value to each block. </p>
+<p> There was also a whole thing about managing a live version of the file seperate than the file that is saved for iframe to update (can't update iframe at every key press, but need autcomplete response at each key press, so have to maintain two versions..) </p>
+<p> Anyways, here's a clip of when I first figured it out! </p>
+<p> <video src=https://attachments.are.na/34503395/73f5ec08fa4c391455563544fe6cefc1.mp4?1739426755 controls loop></video>  </p>
+<p> More details about it here: </p>
+<p> <div class='clip'>
+<a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
+<h1 id='lots-of-work-on-the-editor-today'> Lots of work on the Editor today </h1>
+<h3 id='setting-up-tsserver'> Setting up TSSERVER </h3>
+<p> The goal today was to get LSP/intellisense/autcomplete working. So I can get tooling over the code. Tsserver is a package maintained by microsoft that lets you create a virtual filesystem in the browser and get diagnostics, completions, linting, refernce trees and basically tooling over your code. I had seen this was possible before but it is a whole task to set this up. So I started by getting this tsserver connected to the editor. This took much longer than I would have wanted it to. </p>
+<h3 id='reconciling-blocks,-character-positioning'> Reconciling blocks, character positioning </h3>
+
+<a href='https://feed.a-p.space/blocks/34503089' target="_blank">
+Read More
+</a>
+</div> </p>
+<p> Eventually this project turned became a canvas editor. The codemirror instances placed onto an infinite canvas to be moved around based on logic of the program or whatever the user pleases. </p>
+<p> <video src=https://attachments.are.na/35440277/01c403b3e1f05c1f41d69b8d2df2051e.mp4?1742682152 controls loop></video>  </p>
+<p> This was also the first time I made a contribution to an open source project! I was using the vim extension for codemirror and they hadn't implemented cursor scaling when css transforms change the viewport. I tried my best to implement this and got it to working at 90% "good" (cursor scaling wasn't absolutely accurate) and submitted the PR :) I got feedback... which I didn't know how to implement and the maintainer eventually did it themselves and merged. But regardless, first experience! </p>
+<p> And finally, I started my <a href = "./publication_tools/chronological.html"> Publication tools project </a> in this environment too! </p>
+<p> <div class='clip'>
+<a href='https://feed.a-p.space/' target="_blank">From [ FEED.A-P ]</a>
+<h1 id='working-on-a-typesetting-algorithm'> Working on a typesetting algorithm </h1>
+<p> Wondering if I could implement a paragraph styles, text overflow etc stuff and make a basic indesign clone... </p>
+<p> <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
+
+<a href='https://feed.a-p.space/blocks/35440203' target="_blank">
+Read More
+</a>
+</div> </p>
+<p class='summary'> I learned a lot about javascript, module loading, LSPing, working with code editors, managing complex state, canvasing, file management and so much more. I don't know how much the environment was actual useful as a writing environment. It just felt like it wasn't adding too much, it was a fun though, to have total control over your environemnt. But running you editor in the same context as your program is a baddddd idea. Bunch of times, it would happen that I would write a function that crashes, and the tab crashes and so does the editor. Stuff like that was super annoying, so thats definelty a major lesson. </p>
+<h2 id='reducing-the-scope'> Reducing the scope </h2>
+<p> publication design tools as programming environments </p>
+</body>
+<script type='module' src='/script.js'></script>

@@ -8,19 +8,142 @@
 	<link rel='stylesheet' href='/styles/repo.css'>
 </head> 
 <body>
-	<h1> Publication Tools </h1>
+	<h1 id='publication-tools'> Publication Tools </h1>
+<div class="table-of-contents">
+
+<p>
+	<a style='margin-left:2em;'
+		href='#part-1-(process)' >
+		Part 1 (process)
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#the-typographical-stack-/-vocabulary' >
+		The Typographical Stack / Vocabulary
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#getting-things-off-the-ground' >
+		Getting things off the ground
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#imposition' >
+		Imposition
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:4em;'
+		href='#vertical-offsets' >
+		Vertical Offsets
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:4em;'
+		href='#horizontal-offsets' >
+		Horizontal Offsets
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#off-track-"book"-structural-studies' >
+		Off-track "Book" structural studies
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#raster-limitations-(switch-to-pdf)' >
+		Raster Limitations (switch to PDF)
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#rotating-the-spine-(fold)' >
+		Rotating the spine (Fold)
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#simple-paragraph-typesetting-book' >
+		Simple Paragraph Typesetting book
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#interface-&-techical-detour' >
+		Interface & Techical Detour
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#graphical-interface' >
+		Graphical Interface
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:4em;'
+		href='#loops' >
+		Loops
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:4em;'
+		href='#positioning-stuff' >
+		Positioning Stuff
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:4em;'
+		href='#updating-text' >
+		Updating text
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:3em;'
+		href='#going-forward' >
+		Going Forward
+	</a>
+</p>
+
+<p>
+	<a style='margin-left:2em;'
+		href='#part-2-(outcomes)' >
+		Part 2 (Outcomes)
+	</a>
+</p>
+</div>
 <blockquote> <p> Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out <a href = "./categorically.html"> this page </a> </p> </blockquote>
 <p> Here is an outline of my now concluded thesis project where I've been exploring the technical aspects of the typographical stack for publication design. + Investigating different ways of producing publications by writing programs. </p>
 <div class='spacer'></div>
 
-<h3> The Typographical Stack / Vocabulary </h3>
+<h2 id='part-1-(process)'> Part 1 (process) </h2>
+<blockquote> <p> published February 18th 2026 </p> </blockquote>
+<h3 id='the-typographical-stack-/-vocabulary'> The Typographical Stack / Vocabulary </h3>
 <p> Or rather the vocabulary that gets implemented when developing publication design tools. </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/47056146/original_a57071744862958d821a22108797e8b7.jpeg?1781556971?bc=0" /> </p>
 <blockquote> <p> Software for printed artifacts. Rebuilding the production of books from first principles. Your project lives right at the intersection of procedure and tactility. When people ask you why, you don’t need to answer them. But if you must, your answer is dead on: that with a new tool comes new affordances which in turn creates new forms. ~Ali </p> </blockquote>
 <p> This project started around March of 2025. Although I would say I'd been experimenting with some of these concepts since the winter of 2023 at OCAD U specifically Anthony Campea's TYPE 3 (2023). For which I made this p5 based typesetting tool that gave words weight depending on their word length. </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/40525391/original_c900417b06b0454440c962da0e9d429c.jpg?1761184436?bc=0" /><br></br><img src="https://d2w9rnfcy7mm78.cloudfront.net/40525392/original_cf79a7916b77577a8624eead7fb34764.jpg?1761184439?bc=0" /> </p>
 <p class='caption'> Words weight depending on their word length </p>
-<h3> Getting things off the ground </h3>
+<h3 id='getting-things-off-the-ground'> Getting things off the ground </h3>
 <p> Anyways. The project really started in its current form in March 2025 when I was doing an Independent Study with Roderick. I started off with writing an implementation for basic typesetting, with the idea that later I can intervene in this process and use it in interesting ways (akin to the example above). </p>
 <p> <video src=https://attachments.are.na/35440196/fb349e6c38e76bfcdc913a9d21ba7537.mp4?1742681746 controls loop></video>  </p>
 <p> (+) linked text boxes so words that overflow from one can go into the next. </p>
@@ -33,7 +156,7 @@
 <p> Another thing that isn't visible in the screen grabs is the management of DPI and Units. Essentially, to make publications you want to use typographic units, such as ems, picas, points and inches. And these units also need to correspond to the paper sizing. However, I was doing all of this in p5, which meant everything was raster an specified in pixels, and it didn't print great unless you upscaled it to about 300DPI which wouldn't fit on the screen and be really expensive and slow to draw. </p>
 <p> Anyways, to circumvent all of this, I thought I should have a Scale object, which would have helper functions that would provide pixel values for any given DPI. Given that all elements use this Scale for positioning and sizing, everything would stay in proportion. Then it can be designed at a lower DPI and exported at a higher one. </p>
 <p class='summary'> Implemented basic text formatting and layout. Then added a grid system to locate and position the items onto a page. Created a data structure/interface to save data and express these elements and finally a Scale that manages sizing for different DPIs. I was almost done. The only thing left to figure out was imposition. </p>
-<h3> Imposition </h3>
+<h3 id='imposition'> Imposition </h3>
 <p> How do I turn 2D surfaces ~> Spreads into printable sheets that can be bound as a booklet. </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43641321/original_ab8bd212c50d872621ecbd88330c392d.jpg?1771216735?bc=0" /> </p>
 <div class="two-col">
@@ -69,7 +192,7 @@
 
 <p> I had a lot of fun figuring this imposition stuff out. Because it was a very tactile experience with programming and algorithms. And how these numbers come together on paper to form that booklet is just so satisfying, and being able to undestand it through numbers in such an abstract sense is quite fun! </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43641318/original_b6bdb0b2193464378707a88e41dcca91.png?1771216723?bc=0" /> </p>
-<h4> Vertical Offsets </h4>
+<h4 id='vertical-offsets'> Vertical Offsets </h4>
 <p> With imposition figured out, I had all the first principles that are (probably) necessary for a publication software down. </p>
 <p> It was time to intervene! </p>
 <p> Naturally, since I had just spent so much time trying to figure out imposition, that's where I ended up intervening. So the first idea I had was, to take sheets and offset them by some amount vertically. </p>
@@ -86,7 +209,7 @@
 <p> <video src=https://attachments.are.na/36378554/a912c5b082eff44930692d0c64173bfc.mp4?1746080098 controls loop></video>  </p>
 </div>
 
-<h4> Horizontal Offsets </h4>
+<h4 id='horizontal-offsets'> Horizontal Offsets </h4>
 <p> Over the summer I had the chance to work on a menu design for a restaurant. So I took this opportunity to explore what horizontal offsets would look like (in terms of implementation). </p>
 <p> The horizontal offsets were a little harder to implement. Because offsetting a sheet will change the dimensions of the spreads that fall on the sheets. So managing that was a hassle. But eventually I was able to figure it out <a href="#footnote-anchor-0"  id="footnote-ref-0"> [0] </a>. </p>
 <p> <video src=https://attachments.are.na/40566557/7b31b1807a182d5b41f6229e2d5aeea1.mp4?1761321390 controls loop></video>  </p>
@@ -96,7 +219,7 @@
 <p> This is how the final thing came out to be: </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/40957412/original_47164b5fcc4c8788e3ca6075b7edd1de.jpg?1762625710?bc=0" /><br></br><img src="https://d2w9rnfcy7mm78.cloudfront.net/40957411/original_607ab1d2e6a86e36264094a94cad3fa1.jpg?1762625709?bc=0" /><br></br><img src="https://d2w9rnfcy7mm78.cloudfront.net/40957414/original_542da6c624a266583d00a2abd2454f83.jpg?1762625712?bc=0" /> </p>
 <p class='summary'> Explored what can be done with imposition, implemented vertical and horizontal offsets as interventions. Used the tool for an actual commercial project and delivered well produced menus! </p>
-<h3> Off-track "Book" structural studies </h3>
+<h3 id='off-track-"book"-structural-studies'> Off-track "Book" structural studies </h3>
 <p> In the early days was trying to play around with creating alternative book structures that would alter the content and produce alternate ways of navigating the content and have space for interactions between pages. </p>
 <p> <video src=https://attachments.are.na/40570288/c882964c688befbbc50f9f3625f1777f.mp4?1761330724 controls loop></video>  </p>
 <p> and: this other idea where spreads would be formed at page intersections (so only when pages from the two different booklets correctly aligned) </p>
@@ -104,7 +227,7 @@
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43937724/original_6e65577239174cfabd56198d174a256d.jpg?1772083747?bc=0" /> </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43937723/original_390665424b4d9e2ae8339f337917de38.jpg?1772083747?bc=0" /> </p>
 <p class='summary'> No summary, just a note to come back to this and make something nicer. I think the concepts are interesting, just have to craft these better. </p>
-<h3> Raster Limitations (switch to PDF) </h3>
+<h3 id='raster-limitations-(switch-to-pdf)'> Raster Limitations (switch to PDF) </h3>
 <p> I worked on a booklet project with Craig towards the end of the fall semester. </p>
 <p> <video src=https://attachments.are.na/43922342/66152ed33eae0e3d11f816d83b2ebdc8.mp4?1772043429 controls loop></video>  </p>
 <p> The project was generally really simple, but it put my publication stack to the test. How well could it handle typesetting about 8000 words. Turns out the finer details weren't great and the rags were all over the place, but other than that it was a pretty good outcome considering it was designed and fabricated in 4 days. </p>
@@ -131,7 +254,7 @@
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43898506/original_bd04e926242bc111f999cbb6316e9cf5.jpg?1771970633?bc=0" /> </p>
 <p> I think the outcome is not that great looking, but it technically worked and I was able to specify spot colors and the printshop was able to print it. </p>
 <p class='summary'> Tried some conditional typesetting, finer details like baseline shifts, indents and character styles. Implemented 2-UP imposition which exposed limitations of printing JPEGS, eventually made the move to working with PDFs </p>
-<h3> Rotating the spine (Fold) </h3>
+<h3 id='rotating-the-spine-(fold)'> Rotating the spine (Fold) </h3>
 <p> I offsetted the spine vertically and then horizontally, so at this point it felt the logical next thing would be to rotate the spine. </p>
 <p> Surprisingly, around the same time, Alexandra from my thesis cohort had found her self experimenting with the same gesture in her own workshop experiments. </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43726293/original_cc81d58aa6d9c144cdddb2ea3d459997.png?1771453349?bc=0" /> </p>
@@ -174,12 +297,12 @@
 <p> <video src=https://attachments.are.na/43923862/9218d83facc14db4c31a228c925dd20e.mp4?1772045961 controls loop></video>  </p>
 <p class='caption'> incomplete specimen for the fold typeface. </p>
 <p class='summary'> Explored and implemented folding paper algorithms. Found that the better use case for the folding program was to take folds from physical form into a digital form for further parametric exploration rather than developing digitally and executing physically. </p>
-<h3> Simple Paragraph Typesetting book </h3>
+<h3 id='simple-paragraph-typesetting-book'> Simple Paragraph Typesetting book </h3>
 <p> As an explanatory exercise of the process behind setting a paragraph I made a book that shows the process underneath (for a left-aligned paragraph). </p>
 <p> <video src=https://attachments.are.na/43923888/97a6fcf829ebcfc544979f366813487d.mp4?1772046058 controls loop></video>  </p>
 <p> This got compiled, imposed into signatures and printed and bound into a book. Going forward I think this is an an interesting presentation for step-wise program execution. I can see conditional typesetting logic being expressed aptly here. </p>
 <p class='summary'> Did a project that explicitly explains step-wise execution of typesetting program. </p>
-<h3> Interface & Techical Detour </h3>
+<h3 id='interface-&-techical-detour'> Interface & Techical Detour </h3>
 <blockquote> <p> If you aren't interested in the programmatic aspects, feel free to skip to the <a href = "#graphical-interface"> Graphical Interface </a> part </p> </blockquote>
 <p> While investigating the typographical stack, I was simultaneously also having a tangential explortation -- interface. </p>
 <p> For the most part of the project, I didn't have a graphical interface. Whatever I was making, I was hardcoding it into a Javascript files. Here are some excerpts from how the code is structured underneath, or this is how the programatic interface looked like. </p>
@@ -244,7 +367,7 @@ let fourInches = s.inch(4) // 4*150 = 600px
 ]
 </pre>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43937649/original_9dbac19ae95ef3a3594c6b66e87328aa.png?1772083457?bc=0" /> </p>
-<h3> Graphical Interface </h3>
+<h3 id='graphical-interface'> Graphical Interface </h3>
 <p> Even though the grid positioning makes it much easier to put things on a page, I still needed some form of a graphical interface, not only because it would be more intuitive, but that it also gives me more opportunities to utilise interfaces in interesting ways <a href="#footnote-anchor-4"  id="footnote-ref-4"> [4] </a>. </p>
 <p> My first attempt at an interface for this tool was for a virtual book that I made. This was my Workshop Proposal for our <a href = "../antithesis_cohort.html"> Anti-thesis cohort </a>. </p>
 <p> <video src=https://attachments.are.na/43667811/3bee77836d560aaaddaa58e6286e7022.mp4?1771287661 controls loop></video>  </p>
@@ -268,7 +391,7 @@ let fourInches = s.inch(4) // 4*150 = 600px
 <p> <video src=https://attachments.are.na/43668080/eed4fae607324b77aa6d8d58dfe849a0.mp4?1771288539 controls loop></video>  </p>
 <p> And then I iterated on this a bunch. At this point I wanted this to be a <a href = "https://scratch.mit.edu/"> scratch </a> or <a href = "https://fructure-editor.tumblr.com/"> fructure </a> type software. </p>
 <p> <video src=https://attachments.are.na/41015241/9727d5d85f392a11fca1f6600619d150.mp4?1762836975 controls loop></video> <br></br><video src=https://attachments.are.na/41014081/5b16e9b64337a77f5f4365ad86d81453.mp4?1762833876 controls loop></video>  </p>
-<h4> Loops </h4>
+<h4 id='loops'> Loops </h4>
 <p> <video src=https://attachments.are.na/41101627/6969f5186ea322ee864c3724a348f529.mp4?1763094983 controls loop></video>  </p>
 <p> Initially I was trying to restrict myself from involving the mouse in these interfaces and was wondering if I could find interesting patterns of working with form if I stuck to keyboard only editing. Although I came to the conclusion that this was a foolish idea <a href="#footnote-anchor-5"  id="footnote-ref-5"> [5] </a>. </p>
 <p> However I still wanted to keep the constraint of not having elements draggable on the canvas itself. I wanted to maintain the dataness of the elements on the screen. What I mean to say is, <em> I want the elements to be a result of data </em> rather than the elements being able to control the data (moving them mutates their x and y positions). </p>
@@ -283,14 +406,14 @@ let fourInches = s.inch(4) // 4*150 = 600px
 <p> <video src=https://attachments.are.na/42924978/f8c7ed080f75937f3e5dbd73aeb727db.mp4?1769195654 controls loop></video>  </p>
 <p class='caption'> First Draft of the UI </p>
 <p> This is how it looks currently... </p>
-<h4> Positioning Stuff </h4>
+<h4 id='positioning-stuff'> Positioning Stuff </h4>
 <p> <video src=https://attachments.are.na/43857838/123a00bc189702858dd0280b9b8ce007.mp4?1771873490 controls loop></video>  </p>
-<h4> Updating text </h4>
+<h4 id='updating-text'> Updating text </h4>
 <p> <video src=https://attachments.are.na/43857835/89477f4faa65a1bb5f00b6bc6193c127.mp4?1771873490 controls loop></video>  </p>
 <p> Text updates when you change it :) </p>
 <p> As it may or may not be evident from the videos, data flows from one node to another, which takes the data it recieves and transforms it in its programmed way and sends it forward. Most imporantly, <strong> It can have any UI to reflect and edit its state. </strong> This is the primary  PRO of this approach <a href="#footnote-anchor-6"  id="footnote-ref-6"> [6] </a>. </p>
 <p class='summary'> Did some basic interfaces and slowly progressed to a node based interface. Currently struggling with making the node based interface intuitive and easy to navigate around. </p>
-<h3> Going Forward </h3>
+<h3 id='going-forward'> Going Forward </h3>
 <p> The most common critique I've gotten in the last few weeks is that "Everything looks interesting (breadth) but nothing looks explored (depth)". Which points me to making more outcomes. I think I've been too caught up with the development part, and I would leave things behind the second they started working, as if to say "problem solved". I need to go back and tie up all these knots by utilising the systems that I have devised to make some cool stuff! </p>
 <p> Also what I need to work on is the presentation. How can I communicate to someone who has never seen this project what this project is (?) </p>
 <p> It seemed like I needed some anchors. What is this project about? It's an exploration of the typographical stack... What is the typographical stack? </p>
@@ -302,6 +425,8 @@ let fourInches = s.inch(4) // 4*150 = 600px
 <p class='summary'> Going forward I need to utilise these systems to show what kinds of forms they are capable of making as well as make things specifically to explain the project. I'm thinking of using the categories, "Letter", "Paragraph", "Structure" and "Imposition" to section out the work so that it can be digested a bit easier by an audience that is viewing the work for the first time. </p>
 <p> <img src="https://d2w9rnfcy7mm78.cloudfront.net/43953178/original_7b1d6ab8cd4ba71ced656f4427d355a5.png?1772129826?bc=0" /> </p>
 <p class='caption'> where i started </p>
+<h2 id='part-2-(outcomes)'> Part 2 (Outcomes) </h2>
+<blockquote> <p> published June 17th 2026 </p> </blockquote>
 <div class='footnote'> <p>[0]</p> <p> I was having fun doing all this math cause it was just geometry which I think just works very well with Graphic Design. And also some basic arithmetics and algebra.<a id="footnote-anchor-0" href="#footnote-ref-0"> back </a> </p> </div><div class='footnote'> <p>[1]</p> <p> What is 2-up printing you ask? <a href = "https://www.colorvisionprinting.com/blog/what-is-2-up-printing-4-up-printing-n-up-printing-etc"> see </a><a id="footnote-anchor-1" href="#footnote-ref-1"> back </a> </p> </div><div class='footnote'> <p>[2]</p> <p> It also made me realise how much fun it is to learn math through programming. Because it really has a tendency to show that the interesting aspects of math is not the numbers, but relationships between systems and how they influence each other. Dynamic systems, such as programming make it so you can explore these relationships by constructing these mathematical contexts. ITS APPLIED!<a id="footnote-anchor-2" href="#footnote-ref-2"> back </a> </p> </div><div class='footnote'> <p>[3]</p> <p> I've been really obsessed with ideas of interface through this study. I think its the idea that data can be given an representation, and that representation can be meaningful. And also the fact that I'm a graphic designer and visuals form and structure is fun to me.<a id="footnote-anchor-3" href="#footnote-ref-3"> back </a> </p> </div><div class='footnote'> <p>[4]</p> <p> Interface has been a tangential exploration and a project in itself. However I'm not sure if I would or should present it alongside this project as another part of it, or just have it as something else entirely.<a id="footnote-anchor-4" href="#footnote-ref-4"> back </a> </p> </div><div class='footnote'> <p>[5]</p> <p> why was it a foolish idea?<a id="footnote-anchor-5" href="#footnote-ref-5"> back </a> </p> </div><div class='footnote'> <p>[6]</p> <p> I haven't figured out how to articulate this, but In a way its akin to being able to write pure functions. I mean to be fair they are pure functions with some state and UI attached.<a id="footnote-anchor-6" href="#footnote-ref-6"> back </a> </p> </div>
 </body>
 <script type='module' src='/script.js'></script>

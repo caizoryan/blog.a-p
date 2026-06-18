@@ -19,6 +19,9 @@ let attrsToString = at =>
 		.map(([key, value]) => `${key} = "${value}"`)
 		.join(" ");
 
+let table = ['<div class="table-of-contents">']
+let addToTable
+
 async function eat(tree) {
 	let ret = [];
 	if (!tree) return "";
@@ -125,8 +128,21 @@ function processString(str) {
 }
 
 
-setHookFor(["*", "*/*"], arena)
-setHookFor(['**/*.md'], arena)
+setHookFor(["*", "*/*", '**/*.md'], arena)
+setHookFor(["*", "*/*", '**/*.md'], {
+	condition: (item) => ['h1', 'h2', 'h3', 'h4', 'h5'].includes(item.tag),
+	element: (item, child) => {
+		if (item.tag.trim() != 'h1' && addToTable) table.push(`
+<p>
+	<a style='margin-left:${item.tag.slice(1).trim()}em;'
+		href='#${child.toLowerCase().split(" ").join('-')}' >
+		${child}
+	</a>
+</p>`)
+		return `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
+	}
+})
+// setHookFor([], arena)
 setHookFor("**/*.md", {
     condition: (item, child) => {
         const prefix = child.split(" ")[0];
@@ -139,11 +155,6 @@ setHookFor("**/*.md", {
 			const modifiedString = child.replace(regex, '');
 			return `<${item.tag} class='${matchedValue}'> ${modifiedString} </${item.tag}>`;
     }
-});
-
-setHookFor("pages/publication_engine.md", {
-    condition: (item) => ['h1', 'h2', 'h3', 'h4', 'h5'].includes(item.tag),
-    element: (item, child) => `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
 });
 
 // Date hook
@@ -186,6 +197,8 @@ const MD = async (content) => {
 	if (tree) body = await eat(tree);
 	else body = content;
 
+	console.log("Array", Array.isArray(body))
+
 	return body;
 };
 
@@ -205,10 +218,25 @@ let html = (body, styles = []) => `
 <script type='module' src='/script.js'></script>
 `
 
-export let transform = async content => MD(content)
+export let transform = async (content, addTable) => {
+	addToTable = addTable
+	let body = await MD(content)
+
+	if (addTable){
+		table.push("</div>")
+		body.splice(1, 0, table)
+		body = body.flat()
+		table = ['<div class="table-of-contents">']
+	}
+
+	addToTable = true
+
+	return body
+}
 export let transformmd = async (path) => {
 	let file = fs.readFileSync("./" + path, { encoding: 'utf-8' })
-	let content = await transform(file);
+	let addtable = path.includes("index.md") ? false : true
+	let content = await transform(file, addtable);
 	let split = path.split('.')
 	let ext = split.pop()
 	let htmlpath = split.join(".") + '.html'

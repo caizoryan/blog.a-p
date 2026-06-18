@@ -2,14 +2,16 @@
 
 Hey there person! I hope you're doing well :)
 
-Welcome to my blog. I don't have a lot of stuff here yet, rather there's just one post. This blog runs on the same engine that powers [research.if-m](https://research.if-m.works). 
-
+Welcome to my blog. I don't have a lot of stuff here yet, but feel free to dig in. Most of the writings here are work in progress, so expect some change!
 
 insert: [Reflecting, Recaping and Wrapping up 2025](./pages/wrapping_2025.md)
 Here's my first blog post!
 
 insert: [Publication tools](./pages/publication_tools/chronological.md)
 This is one of my long running projects... wrote about it a little bit... (WIP)
+
+insert: [Building Programming Environments](./pages/building_programming_environments.md)
+This is one is 1 quarter narrative about me learning programming and 3 quaters reflecting on my experiences building programming enviroments.
 
 
 ### Here is a codeblock
