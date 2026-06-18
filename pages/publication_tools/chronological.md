@@ -7,8 +7,10 @@ Here is an outline of my now concluded thesis project where I've been exploring 
 
 <div class='spacer'></div>
 
-## Part 1 (process)
+## Part 1 - Process
 > published February 18th 2026
+
+This section is the process part. What I was thinking about at each stage and how they waterfalled into the next exploration of the project. If you're interested in what I made using these tools feel free to skip to [Part 2](#part-2---outcomes)
 
 ### The Typographical Stack / Vocabulary
 
@@ -522,5 +524,7 @@ summary: Going forward I need to utilise these systems to show what kinds of for
 
 caption: where i started
 
-## Part 2 (Outcomes)
+## Part 2 - Outcomes
 > published June 17th 2026
+
+Whoops! will add stuff here soon, I promise!!!

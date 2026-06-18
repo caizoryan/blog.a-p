@@ -380,6 +380,13 @@ h4::before {
   color: var(--muted);
 }
 
+.WIP {
+	background-color: var(--muted);
+	color: var(--background);
+	padding: 1em;
+	font-size: 2em;
+}
+
 h5 {
 	position: relative;
 }

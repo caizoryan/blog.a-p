@@ -146,10 +146,11 @@ setHookFor(["*", "*/*", '**/*.md'], {
 setHookFor("**/*.md", {
     condition: (item, child) => {
         const prefix = child.split(" ")[0];
-        return item.tag === 'p' && ['insert:', 'caption:', 'summary:'].includes(prefix);
+        return item.tag === 'p' && ['insert:', 'caption:', 'summary:', 'WIP:'].includes(prefix);
     },
+
     element: (item, child) => {
-			const regex = /^(insert|caption|summary): /;
+			const regex = /^(insert|caption|summary|WIP): /;
 			const match = child.match(regex);
 			const matchedValue = match[1];
 			const modifiedString = child.replace(regex, '');
