@@ -4,7 +4,7 @@
 
 Here is an outline of my now concluded thesis project where I've been exploring the technical aspects of the typographical stack for publication design. + Investigating different ways of producing publications by writing programs.
 
-summary: not exactly a summary, I just wanted to put a note here and say I did this whole project with almost no dependencies (the only two being p5.js and later pdfkit.js) and no LLM's. So wrote all of this is handcrafted in vanilla js :) 
+summary: not exactly a summary, I just wanted to put a note here and say I did this whole project with almost no dependencies (the only two being p5.js and later pdfkit.js) and no LLM's. All of this is handcrafted in vanilla js :) 
 
 <div class='spacer'></div>
 
