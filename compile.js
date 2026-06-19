@@ -150,7 +150,7 @@ setHookFor(["*", "*/*", '**/*.md'], {
 	<a 
 	style='margin-left:${(parseInt(item.tag.slice(1).trim())-1.5) * 2.5 }em;'
 		href='#${child.toLowerCase().split(" ").join('-')}' >
-		 ${child}
+		 ${child.trim()}
 	</a>
 </${item.tag}>`)
 		}

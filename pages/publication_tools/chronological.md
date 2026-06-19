@@ -528,6 +528,11 @@ caption: where i started
 ## Part 2 - Outcomes
 > published June 17th 2026
 
+Artifacts I made using the tools to exhibit at the graduate open show in May. This is how the exhbit was set up. (Made the tabletop myself too :)
+
+[image](https://www.are.na/block/47151083)
+
+There was an iPad and two phones framed onto the table + an iMac which had documentation of the tools playing on loop, much of the same media that's flowing through this blog post.
 
 ### Musings
 

@@ -261,7 +261,7 @@ video {
 
 
 .table-of-contents::before {
-	font-size: 1.7em;
+	font-size: 1.2em;
   content: "TABLE OF CONTENTS";
   display: block;
   padding-bottom: 0.6em;
@@ -302,6 +302,8 @@ border-bottom: 1px solid;
   margin-top: 0;
 	border-color: #bbb;
 	color: black;
+	display: grid;
+  grid-template-columns: 2% 98%;
 }
 
 .table-of-contents h1:hover,
@@ -314,8 +316,8 @@ border-bottom: 1px solid;
 }
 
 
-.table-of-contents h2{font-size: 1.4em; padding-bottom: .5em;}
-.table-of-contents h3{font-size: 1.1em;}
+/* .table-of-contents h2{font-size: 1.4em; padding-bottom: .5em;} */
+/* .table-of-contents h3{font-size: 1.1em;} */
 .table-of-contents h4{ opacity: .6; }
 
 .table-of-contents h1::before,
