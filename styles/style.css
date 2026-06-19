@@ -261,11 +261,12 @@ video {
 
 
 .table-of-contents::before {
-	font-size: 1.2em;
+	font-size: 1.7em;
   content: "TABLE OF CONTENTS";
   display: block;
   padding-bottom: 0.6em;
   color: black;
+border-bottom: 1px solid;
 }
 
 .table-of-contents a {
@@ -279,14 +280,41 @@ video {
 }
 
 .table-of-contents {
-  background-color: var(--most-muted);
+  background-color: #f6f6f6;
   color: var(--background);
   padding: 1em;
 	margin-bottom: 4em;
 	padding-bottom: 1.5em;
 	width: max-content;
-
 }
+
+.table-of-contents h1,
+.table-of-contents h2,
+.table-of-contents h3,
+.table-of-contents h4,
+.table-of-contents h5{
+	font-family:inherit;
+	font-size: 1em;
+	line-height: 1em;
+  padding-top: .5em;
+  padding-bottom: .125em;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.table-of-contents h2{font-size: 1.4em; padding-bottom: .5em;}
+.table-of-contents h3{font-size: 1.1em;}
+.table-of-contents h4{ opacity: .6; }
+
+.table-of-contents h1::before,
+.table-of-contents h2::before,
+.table-of-contents h3::before,
+.table-of-contents h4::before,
+.table-of-contents h5::before
+{
+	display: none;
+}
+
 
 .table-of-contents p {
 	margin: 0;

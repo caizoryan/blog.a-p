@@ -131,14 +131,15 @@ function processString(str) {
 setHookFor(["*", "*/*", '**/*.md'], arena)
 setHookFor(["*", "*/*", '**/*.md'], {
 	condition: (item) => ['h1', 'h2', 'h3', 'h4', 'h5'].includes(item.tag),
+
 	element: (item, child) => {
 		if (item.tag.trim() != 'h1' && addToTable) table.push(`
-<p>
-	<a style='margin-left:${item.tag.slice(1).trim()}em;'
+<${item.tag}>
+	<a style='margin-left:${parseInt(item.tag.slice(1).trim()) / 2 * 2}em;'
 		href='#${child.toLowerCase().split(" ").join('-')}' >
 		${child}
 	</a>
-</p>`)
+</${item.tag}>`)
 		return `<${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} </${item.tag}>`
 	}
 })
