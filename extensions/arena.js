@@ -10,9 +10,9 @@ let options = {
 		referrerPolicy: "no-referrer",
 	},
 };
-const image = (block) => `<img src="${block.image.original.url}" />`;
+const image = (block) => `<img loading='lazy' src="${block.image.original.url}" />`;
 const media_embed = (block) =>
-	`<span class="media">${block.embed?.html}</span>`;
+	`<span  class="media">${block.embed?.html}</span>`;
 
 const media = (block) => `
 	<a href=${block?.source?.url}>
@@ -25,7 +25,7 @@ const media = (block) => `
 `;
 
 const video = (block) =>
-	`<video src=${block.attachment.url} controls loop></video> `;
+	`<video loading='lazy' src=${block.attachment.url} controls loop></video> `;
 const link = (block) =>
 	`<span class="link"> <a target="_blank" href=${block.source.url}>${block.title} ${link_svg}</a> </span>`;
 

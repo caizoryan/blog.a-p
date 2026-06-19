@@ -271,7 +271,7 @@ border-bottom: 1px solid;
 
 .table-of-contents a {
   text-decoration: none;
-	border-left: 1px solid black;
+	border-left: 1px solid #eee;
 	background-color: none;
 	background: none;
   padding-left: 1em;
@@ -297,10 +297,22 @@ border-bottom: 1px solid;
 	font-size: 1em;
 	line-height: 1em;
   padding-top: .5em;
-  padding-bottom: .125em;
+	padding-bottom: 0.4em;
   margin-bottom: 0;
   margin-top: 0;
+	border-color: #bbb;
+	color: black;
 }
+
+.table-of-contents h1:hover,
+.table-of-contents h2:hover,
+.table-of-contents h3:hover,
+.table-of-contents h4:hover,
+.table-of-contents h5:hover
+{
+	background-color: #eee;
+}
+
 
 .table-of-contents h2{font-size: 1.4em; padding-bottom: .5em;}
 .table-of-contents h3{font-size: 1.1em;}

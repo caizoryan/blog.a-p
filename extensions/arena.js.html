@@ -20,9 +20,9 @@ let options = {
 		referrerPolicy: "no-referrer",
 	},
 };
-const image = (block) => `&lt;img src="${block.image.original.url}" />`;
+const image = (block) => `&lt;img loading='lazy' src="${block.image.original.url}" />`;
 const media_embed = (block) =>
-	`&lt;span class="media">${block.embed?.html}&lt;/span>`;
+	`&lt;span  class="media">${block.embed?.html}&lt;/span>`;
 
 const media = (block) => `
 	&lt;a href=${block?.source?.url}>
@@ -35,7 +35,7 @@ const media = (block) => `
 `;
 
 const video = (block) =>
-	`&lt;video src=${block.attachment.url} controls loop>&lt;/video> `;
+	`&lt;video loading='lazy' src=${block.attachment.url} controls loop>&lt;/video> `;
 const link = (block) =>
 	`&lt;span class="link"> &lt;a target="_blank" href=${block.source.url}>${block.title} ${link_svg}&lt;/a> &lt;/span>`;
 

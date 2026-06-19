@@ -1,9 +1,10 @@
 # Publication Tools 
 
-
 > Project laid out (almost) chronologically. If you're interested in looking at it categorically, check out [this page](./categorically.md)
 
 Here is an outline of my now concluded thesis project where I've been exploring the technical aspects of the typographical stack for publication design. + Investigating different ways of producing publications by writing programs.
+
+summary: not exactly a summary, I just wanted to put a note here and say I did this whole project with almost no dependencies (the only two being p5.js and later pdfkit.js) and no LLM's. So wrote all of this is handcrafted in vanilla js :) 
 
 <div class='spacer'></div>
 
@@ -526,5 +527,48 @@ caption: where i started
 
 ## Part 2 - Outcomes
 > published June 17th 2026
+
+
+### Musings
+
+[image](https://www.are.na/block/46461559)
+
+One of the books I made using these tools is called Musings. Its a zine of [writings by omama](https://omama.garden/circling%20the%20drain%20press/index.html). The core mechanism and the visual language of the book comes from this environment where moving text boxes leaks the words from the text boxes leaving a trace of the action of desigining.
+
+[video](https://www.are.na/block/47150656)
+
+Grid structures are then produced based on the position of “leaked” words, creating an environment where grid structures are produced as a result of free form composition rather that being a precursor to composition.
+
+[video](https://www.are.na/block/47150655)
+
+caption: Close up of grid structure made using quad trees based on the location of "leaked words"
+
+[image](https://www.are.na/block/46461561)
+[image](https://www.are.na/block/46461565)
+
+
+### Folded letterforms
+
+With all the paper folding simulation math that I did, I made some components for the node tool.
+
+[video](https://www.are.na/block/47150764)
+
+And using this modelled all the letters in the tool (folded them physically and then inputted the values into the tool). Once I had all the letters I made a component that would put letters together and let you type words or sentences.
+
+[video](https://www.are.na/block/47150848)
+
+And made news prints out of it:
+
+[image](https://www.are.na/block/46461634)
+
+[image](https://www.are.na/block/46461633)
+
+[image](https://www.are.na/block/46461562)
+
+[image](https://www.are.na/block/46461563)
+
+### Physarium Booklet
+
+
 
 Whoops! will add stuff here soon, I promise!!!

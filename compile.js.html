@@ -31,6 +31,7 @@ let attrsToString = at =>
 
 let table = ['&lt;div class="table-of-contents">']
 let addToTable
+let count = []
 
 async function eat(tree) {
 	let ret = [];
@@ -143,13 +144,26 @@ setHookFor(["*", "*/*", '**/*.md'], {
 	condition: (item) => ['h1', 'h2', 'h3', 'h4', 'h5'].includes(item.tag),
 
 	element: (item, child) => {
-		if (item.tag.trim() != 'h1' && addToTable) table.push(`
+		if (item.tag.trim() != 'h1' && addToTable){
+			let level = parseInt(item.tag.slice(1).trim())
+			if (count.length >= level) count = count.slice(0, level-1)
+			if (count.length == 0 && level == 2) count = [0]
+			if (count.length &lt; level-1) count.push(0)
+
+			count[level-2]++
+
+			console.log(count)
+
+			table.push(`
 &lt;${item.tag}>
-	&lt;a style='margin-left:${parseInt(item.tag.slice(1).trim()) / 2 * 2}em;'
+	&lt;span class='num'>${count.join(".")}&lt;/span>
+	&lt;a 
+	style='margin-left:${(parseInt(item.tag.slice(1).trim())-1.5) * 2.5 }em;'
 		href='#${child.toLowerCase().split(" ").join('-')}' >
-		${child}
+		 ${child}
 	&lt;/a>
 &lt;/${item.tag}>`)
+		}
 		return `&lt;${item.tag} id='${child.toLowerCase().split(" ").join('-')}'> ${child} &lt;/${item.tag}>`
 	}
 })
@@ -239,6 +253,7 @@ export let transform = async (content, addTable) => {
 		body.splice(1, 0, table)
 		body = body.flat()
 		table = ['&lt;div class="table-of-contents">']
+		count = []
 	}
 
 	addToTable = true
